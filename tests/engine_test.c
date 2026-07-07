@@ -159,16 +159,15 @@ int main(void)
     run_clocks(api, inst, 96, &ons, &offs);
     CHECK(ons == 0, "no held notes -> silent (0 note-ons)");
 
-    /* 8. Accent depth (velocity) — 'Habanera' step 0 is an 'A' accent */
-    int hab = -1;
+    /* 8. Accent depth (velocity) — find any groove whose base row starts with 'A' */
+    int acc_pat = -1;
     for (int i = 0; i < count; i++) {
-        char key[24]; snprintf(key, sizeof key, "name@%d", i);
-        api->get_param(inst, key, buf, sizeof buf);
-        if (strcmp(buf, "Habanera") == 0) { hab = i; break; }
+        char p[8]; snprintf(p, sizeof p, "%d", i);
+        api->set_param(inst, "pattern", p);
+        api->get_param(inst, "row0", buf, sizeof buf);
+        if (buf[0] == 'A') { acc_pat = i; break; }
     }
-    CHECK(hab >= 0, "found 'Habanera' groove (accent test)");
-    snprintf(pv, sizeof pv, "%d", hab);
-    api->set_param(inst, "pattern", pv);
+    CHECK(acc_pat >= 0, "found a groove accented on step 0");
     send(api, inst, 0x90, 60, 100, 3, &ons, &offs);        /* hold one note */
     api->set_param(inst, "accent", "0");
     CHECK(send_first_vel(api, inst, 0xFA, 0, 0, 1) == 100, "accent 0 -> flat velocity 100");
@@ -220,12 +219,13 @@ int main(void)
     api->set_param(inst, "variant", "9");   /* out of range -> clamps to last */
     api->get_param(inst, "variant", buf, sizeof buf);
     CHECK(atoi(buf) == 2, "variant clamps to last (2)");
-    snprintf(pv, sizeof pv, "%d", four);    /* single-variant groove */
+    snprintf(pv, sizeof pv, "%d", four);
     api->set_param(inst, "pattern", pv);
-    api->get_param(inst, "variant_count", buf, sizeof buf);
-    CHECK(atoi(buf) == 1, "Four Floor: variant_count == 1");
-    api->get_param(inst, "variant", buf, sizeof buf);
-    CHECK(atoi(buf) == 0, "variant clamped to 0 on single-variant groove");
+    int fvc, fvv;
+    api->get_param(inst, "variant_count", buf, sizeof buf); fvc = atoi(buf);
+    api->get_param(inst, "variant", buf, sizeof buf); fvv = atoi(buf);
+    CHECK(fvc >= 1, "variant_count >= 1 after switch");
+    CHECK(fvv >= 0 && fvv < fvc, "variant clamped into range on pattern switch");
 
     api->destroy_instance(inst);
 

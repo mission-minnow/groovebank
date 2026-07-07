@@ -2,6 +2,8 @@
 
 **A library of standard rhythm templates for [Schwung](https://github.com/charlesvestal/schwung) on the Ableton Move — played by the chord you hold.**
 
+![grooves](https://img.shields.io/badge/grooves-235-6C5CE7)
+![genres](https://img.shields.io/badge/genres-32-00B894)
 ![platform](https://img.shields.io/badge/platform-Ableton%20Move-2D3436)
 ![module](https://img.shields.io/badge/Schwung-MIDI%20FX-0984E3)
 
@@ -100,6 +102,22 @@ Row marks: `x` hit · `A` accent · `g` ghost (soft) · `-` tie/sustain · `.` r
 
 These follow the **Bank-family convention** shared with Beat Bank: jog browses,
 K7 = swing, K8 = genre.
+
+---
+
+## 🎵 Genres
+
+**235 grooves across 32 genres**, each with a base rhythm + authored flavors:
+
+> **Latin/World** — Latin (clave, tresillo, montuno, cascara…) · Brazil (bossa, samba, baião…) · Afro · Mideast (maqsum, baladi, saidi…) · India (teental, keherwa…) · World
+> **Electronic** — house · techno · electro · garage · dnb · jungle · dubstep · breaks
+> **Caribbean** — reggae · ska · dancehall · reggaeton · soca · calypso
+> **Groove** — funk · soul · gospel · rnb · hip-hop · trap · lofi · trip-hop
+> **Band** — jazz · rock · pop · strum (folk / flamenco / bluegrass…)
+
+Browse genre-first: the jog cycles grooves inside a genre; Knob 8 jumps between
+genres. Odd-meter traditions use their natural step counts (12 for 6/8 & 3/4,
+14 for 7/8, etc.), so the world/jazz-waltz grooves feel right.
 
 ---
 

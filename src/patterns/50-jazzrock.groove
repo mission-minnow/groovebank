@@ -1,0 +1,268 @@
+# Groove Bank — Jazz / Rock / Pop / Strum
+# Single-lane rhythms: hold a chord, these strike it. K4 morphs alt: flavors.
+
+name: Charleston
+genre: JAZZ
+steps: 16
+hit:  x......x........
+alt:  x......x......x.
+alt:  ..x....x........
+
+name: Comp And-2
+genre: JAZZ
+steps: 16
+hit:  ......x.....x...
+alt:  ......x...x..x..
+alt:  ......x.........
+
+name: Comp And-4
+genre: JAZZ
+steps: 16
+hit:  ..x.........x..x
+alt:  ..x.........x...
+alt:  ..A.........x..x
+
+name: Freddie Green
+genre: JAZZ
+steps: 16
+hit:  x...x...x...x...
+alt:  x...g...x...g...
+alt:  A...x...A...x...
+
+name: Bossa Comp
+genre: JAZZ
+steps: 16
+hit:  x..x..x...x..x..
+alt:  x..x..x..x..x..x
+alt:  x..x....x..x....
+
+name: Afro-Cuban Jazz
+genre: JAZZ
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x..x..x.x..x.x..
+alt:  x..x....x..x..x.
+
+name: Jazz Waltz
+genre: JAZZ
+steps: 12
+hit:  x...x..x....
+alt:  x...x..x..x.
+alt:  x......x....
+
+name: Jazz Ballad
+genre: JAZZ
+steps: 16
+hit:  x.......x-......
+alt:  x.......x-....x.
+alt:  x...............
+
+name: Bebop Jab
+genre: JAZZ
+steps: 16
+hit:  ....x..x....x.x.
+alt:  ....x..x..x.x.x.
+alt:  ....x..x....x...
+
+name: Comp Push
+genre: JAZZ
+steps: 16
+hit:  ...x....x......x
+alt:  ...x....x...x..x
+alt:  ...x....x.......
+
+name: Two-Bar Comp
+genre: JAZZ
+steps: 32
+hit:  x......x........x......x......x.
+alt:  x......x......x.x......x......x.
+alt:  x......x........x......x........
+
+name: Straight 8ths
+genre: ROCK
+steps: 16
+hit:  x.x.x.x.x.x.x.x.
+alt:  A.x.x.x.A.x.x.x.
+alt:  x...x...x...x...
+
+name: Offbeat
+genre: ROCK
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x...x...x...x.
+alt:  ..x.x.x...x.x.x.
+
+name: Gallop
+genre: ROCK
+steps: 16
+hit:  x.xxx.xxx.xxx.xx
+alt:  x.xxx.xxx.xxx.xx
+alt:  x.x.x.x.x.x.x.x.
+
+name: Power Push
+genre: ROCK
+steps: 16
+hit:  x...x...x..x..x.
+alt:  x...x...x..x.x.x
+alt:  x...x...x...x...
+
+name: Rock Ballad
+genre: ROCK
+steps: 16
+hit:  x.......x.......
+alt:  x.......x-....x.
+alt:  x...x...x...x...
+
+name: Anthem
+genre: ROCK
+steps: 16
+hit:  x...x...x.x.x...
+alt:  A...x...A.x.x...
+alt:  x...x...x...x...
+
+name: Punk
+genre: ROCK
+steps: 16
+hit:  xxxxxxxxxxxxxxxx
+alt:  x.xxx.xxx.xxx.xx
+alt:  xxxxxxxx.xxxxxx.
+
+name: Rock Shuffle
+genre: ROCK
+steps: 16
+hit:  x.xx.xx.xx.xx.x.
+alt:  x..x..x..x..x..x
+alt:  x.x..xx.x.x..xx.
+
+name: Reggae-Rock
+genre: ROCK
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x.g.x...x.g.x.
+alt:  ..x...x.x.x...x.
+
+name: Surf
+genre: ROCK
+steps: 16
+hit:  x..x.x.xx..x.x.x
+alt:  x..x.x.xx..x.x.x
+alt:  x.x.x.x.x.x.x.x.
+
+name: Rock Stab
+genre: ROCK
+steps: 16
+hit:  x.....x.x.....x.
+alt:  x.....x.x.....x.
+alt:  x.....x.x...x.x.
+
+name: Metal Chug
+genre: ROCK
+steps: 16
+hit:  x.xxx.xxx.xxx.xx
+alt:  xxx.xxx.xxx.xxx.
+alt:  x.x.x.x.x.x.x.x.
+
+name: Four Floor Pop
+genre: POP
+steps: 16
+hit:  x...x...x...x...
+alt:  x...x...x...x..x
+alt:  x...x.x.x...x.x.
+
+name: Pop Ballad
+genre: POP
+steps: 16
+hit:  x.......x---....
+alt:  x.......x---..x.
+alt:  x...........x...
+
+name: Disco Pop
+genre: POP
+steps: 16
+hit:  x.x.x.x.x.x.x.x.
+alt:  ..x...x...x...x.
+alt:  x.xxx.x.x.xxx.x.
+
+name: Stadium
+genre: POP
+steps: 16
+hit:  x...x...x...x...
+alt:  x..x..x.x..x..x.
+alt:  x.x.x.x.x.x.x.x.
+
+name: Pop Push
+genre: POP
+steps: 16
+hit:  x...x..x.x..x...
+alt:  x...x..x.x..x..x
+alt:  x...x...x...x...
+
+name: Down Up
+genre: STRUM
+steps: 16
+hit:  x-x-x-x-x-x-x-x-
+alt:  x-x-x-x-x-x-x-x-
+alt:  x---x-x-x---x-x-
+
+name: Folk Strum
+genre: STRUM
+steps: 16
+hit:  x---x-x-x-x-x-x-
+alt:  x---x-x-x-x-x-xx
+alt:  x---x---x-x-x---
+
+name: Ballad 6/8
+genre: STRUM
+steps: 12
+hit:  x----x-x--x-
+alt:  x----x-x--x-
+alt:  x--x-x-x--x-
+
+name: Country Boom-Chick
+genre: STRUM
+steps: 16
+hit:  x...x-x.x...x-x.
+alt:  x...x-x.x...x-xx
+alt:  x...x...x...x...
+
+name: Flamenco
+genre: STRUM
+steps: 16
+hit:  x.xxx.x.x.xxx.x.
+alt:  x.xxx.xxx.xxx.xx
+alt:  x...x.x.x...x.x.
+
+name: Bluegrass
+genre: STRUM
+steps: 16
+hit:  x-x.x-x.x-x.x-x.
+alt:  x-x.x-xxx-x.x-x.
+alt:  x...x-x.x...x-x.
+
+name: Waltz Strum
+genre: STRUM
+steps: 12
+hit:  x---x-x-x-x-
+alt:  x---x-x-x-x-
+alt:  x---x---x---
+
+name: Reggae Strum
+genre: STRUM
+steps: 16
+hit:  ..x-..x-..x-..x-
+alt:  ..x-..x-..x-..x-
+alt:  ..x-..x-x.x-..x-
+
+name: Down Up Fast
+genre: STRUM
+steps: 16
+hit:  x-x-xxx-x-x-xxx-
+alt:  x-x-xxx-x-x-xxxx
+alt:  x---x-x-x---x-x-
+
+name: Ranchera
+genre: STRUM
+steps: 16
+hit:  x...x-x-x...x-x-
+alt:  x...x-x-x..xx-x-
+alt:  x...x...x...x...

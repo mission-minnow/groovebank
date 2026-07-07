@@ -1,0 +1,296 @@
+# Groove Bank — Funk / Soul / Gospel / RnB / Hip-Hop / Trap / Lofi
+# Single-lane rhythms: hold a chord, these strike it. K4 morphs alt: flavors.
+
+name: Charleston
+genre: FUNK
+steps: 16
+hit:  x......x........
+alt:  x......x....x...
+alt:  A......gx.......
+
+name: 16th Comp
+genre: FUNK
+steps: 16
+hit:  x.xxg.xxx.xxg.xx
+alt:  A.gxg.xxA.gxg.gx
+alt:  x..x..x...x..x..
+
+name: Scratch Comp
+genre: FUNK
+steps: 16
+hit:  g.Axg.xgg.Axg.xg
+alt:  gxAxgxxggxAxgxxg
+alt:  g..A..g.g..A..g.
+
+name: Sync Stabs
+genre: FUNK
+steps: 16
+hit:  x...xA..x..A..x.
+alt:  x...xA..x..A.xA.
+alt:  A.....x....A....
+
+name: Clav Comp
+genre: FUNK
+steps: 16
+hit:  x.g.A.gxx.g.A.gx
+alt:  xgg.AggxxggAAggx
+alt:  x...A...x...A...
+
+name: Second Line
+genre: FUNK
+steps: 16
+hit:  x..x.gx.gx..x.g.
+alt:  A..x.gxggxg.x.gg
+alt:  x..x..x..x..x...
+
+name: JB Push
+genre: FUNK
+steps: 16
+hit:  A..g..A.g..A..g.
+alt:  A.ggg.Aggg.AgggA
+alt:  A.....A....A....
+
+name: Disco Funk
+genre: FUNK
+steps: 16
+hit:  x...A...x...A..x
+alt:  x..gA..gx..gA.gx
+alt:  A...x...A...x...
+
+name: Ghost Chop
+genre: FUNK
+steps: 16
+hit:  xg.gxg.gxg.gxg.g
+alt:  Ag.gxggAAg.gxggA
+alt:  x...x...x...x...
+
+name: One Drop Fk
+genre: FUNK
+steps: 16
+hit:  ....A.......A...
+alt:  ..g.A.g...g.A.g.
+alt:  ....A.......A..x
+
+name: Slap Comp
+genre: FUNK
+steps: 16
+hit:  A.g.x.gAg.x.A.g.
+alt:  AggxxggAggxxAggx
+alt:  A...x...x...A...
+
+name: Motown
+genre: SOUL
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x.g.x.g.x.g.x.
+alt:  ..A...x...A...x.
+
+name: Stax
+genre: SOUL
+steps: 16
+hit:  x...x..gx...x..g
+alt:  x..gx.ggx..gx.gg
+alt:  A...x...A...x...
+
+name: Philly
+genre: SOUL
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x.gx.gx.x.gx.gx.
+alt:  A..x..x.A..x..x.
+
+name: Northern
+genre: SOUL
+steps: 16
+hit:  x.x.x.x.x.x.x.x.
+alt:  A.x.x.x.A.x.x.x.
+alt:  x...x...x...x...
+
+name: Soul Stab
+genre: SOUL
+steps: 16
+hit:  x.....A.x.....A.
+alt:  x..g..A.x..g..A.
+alt:  A.......x.......
+
+name: Uptown Soul
+genre: SOUL
+steps: 16
+hit:  x..A.x..x..A.x..
+alt:  xg.A.xg.xg.A.xg.
+alt:  A....x.....A....
+
+name: Shout
+genre: GOSPEL
+steps: 16
+hit:  x.xx.xx.x.xx.xx.
+alt:  A.xxgxxgA.xxgxxg
+alt:  x..x..x.x..x..x.
+
+name: Praise Break
+genre: GOSPEL
+steps: 16
+hit:  A.x.A.x.A.x.A.x.
+alt:  A.xgA.xgA.xgA.xg
+alt:  A...A...A...A...
+
+name: 6/8 Gospel
+genre: GOSPEL
+steps: 12
+hit:  x..x..x..x..
+alt:  x.gx.gx.gx.g
+alt:  A..x..A..x..
+
+name: Gospel Roll
+genre: GOSPEL
+steps: 12
+hit:  x.xx.xx.xx.x
+alt:  A.xxgxxgxxgx
+alt:  x..x..x..x..
+
+name: 90s RnB
+genre: RNB
+steps: 16
+hit:  x...x.x...x.x...
+alt:  x..gx.xg..x.xg..
+alt:  A...x.....x.....
+
+name: Neo Soul
+genre: RNB
+steps: 16
+hit:  x..gx..A..gx..A.
+alt:  xg.gxg.Agggxg.A.
+alt:  A...x.....x...A.
+
+name: New Jack
+genre: RNB
+steps: 16
+hit:  x.x..x.xx.x..x.x
+alt:  A.xg.x.xAgx.gx.x
+alt:  x...x...x...x...
+
+name: Quiet Storm
+genre: RNB
+steps: 16
+hit:  x.....x...x.....
+alt:  x...g.x.g.x...g.
+alt:  A.........A.....
+
+name: Slow Jam
+genre: RNB
+steps: 16
+hit:  x......A....x...
+alt:  x...g..A.g..x...
+alt:  A..........A....
+
+name: Boom Bap
+genre: HIPHOP
+steps: 16
+hit:  x.......x..x....
+alt:  x...g...x..x.g..
+alt:  A.......x..A....
+
+name: G-Funk
+genre: HIPHOP
+steps: 16
+hit:  x...x....x.x....
+alt:  x..gx...gx.xg...
+alt:  A...x......x....
+
+name: East Coast
+genre: HIPHOP
+steps: 16
+hit:  x....x.x...x..x.
+alt:  x..g.x.xg..x.gx.
+alt:  A....x.....x....
+
+name: Jazzy Hop
+genre: HIPHOP
+steps: 16
+hit:  x.....xg..x...x.
+alt:  xg.g..xg.gx.g.x.
+alt:  A.....x...x.....
+
+name: Dilla Hit
+genre: HIPHOP
+steps: 16
+hit:  x.....x..gx....A
+alt:  x..g..xg.gx.g..A
+alt:  A........x......
+
+name: West Bounce
+genre: HIPHOP
+steps: 16
+hit:  x..x....x...x..x
+alt:  x..xg..gx..gx..x
+alt:  A..x....A...x...
+
+name: Trap Stab
+genre: TRAP
+steps: 16
+hit:  x..........x....
+alt:  x......x...x....
+alt:  A..........A....
+
+name: Half-Time
+genre: TRAP
+steps: 16
+hit:  x.......A.......
+alt:  x....x..A....x..
+alt:  A.......x.......
+
+name: Drill
+genre: TRAP
+steps: 16
+hit:  x.....x....x...x
+alt:  x..g..x.g..x.g.x
+alt:  A.....x....A....
+
+name: Dark Stab
+genre: TRAP
+steps: 16
+hit:  x.........x.....
+alt:  x.....x...x...x.
+alt:  A.........A.....
+
+name: Trap Roll
+genre: TRAP
+steps: 32
+hit:  x..............x..............x.
+alt:  x.......x......x......x.......x.
+alt:  A..............A..............A.
+
+name: Lofi
+genre: LOFI
+steps: 16
+hit:  x.....x....x....
+alt:  x..g..xg...x..g.
+alt:  A.....x....x....
+
+name: Chillhop
+genre: LOFI
+steps: 16
+hit:  x....x..x...x...
+alt:  x.g..x.gx.g.x.g.
+alt:  A....x......x...
+
+name: Dusty Keys
+genre: LOFI
+steps: 16
+hit:  x......x...gx...
+alt:  x..g...xg..gx.g.
+alt:  A......x....x...
+
+name: Trip Hop
+genre: TRIPHOP
+steps: 16
+hit:  x.......x...x...
+alt:  x....g..x.g.x...
+alt:  A.......x.......
+
+name: Downtempo
+genre: TRIPHOP
+steps: 16
+hit:  x.........x.....
+alt:  x....x....x..g..
+alt:  A.........x.....

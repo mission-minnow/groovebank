@@ -373,8 +373,11 @@ lockup.
   `GroovePattern.row[GB_MAX_VARIANTS]` + `variant_count`; `variant` param on K4;
   `fire_step` reads the selected variant; canvas shows `v{n}/{count}`. Verified by
   `make test` (one starter groove, "Offbeat Stab", ships with 2 alts).
-- **Stage 6 — Full library:** the §7 research pass → 200–300 patterns, **each with
-  authored variants** (base + a few flavors).
+- **Stage 6 — Full library. ✅ DONE (v0.1.3).** 235 grooves / 393 variant rows /
+  32 genres, authored via 6 parallel genre-cluster research agents, normalized
+  (every row padded/truncated to `steps`, chars validated) into 6 files
+  (`src/patterns/{10-latin,20-electronic,30-caribbean,40-funksoul,50-jazzrock,60-world}.groove`).
+  All parse; `make test` green. Odd meters use natural step counts (8/10/12/14/18/20).
 - **Stage 7 — Ship:** `.github/workflows/release.yml`, docs, catalog entry,
   release synced with Charles's next Schwung release.
 

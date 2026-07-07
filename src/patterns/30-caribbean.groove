@@ -1,31 +1,240 @@
-# Groove Bank — Reggae / Ska / Caribbean
+# Groove Bank — Reggae / Ska / Dancehall / Reggaeton / Soca / Calypso
+# Single-lane rhythms: hold a chord, these strike it. K4 morphs alt: flavors.
 
 name: One Drop Skank
 genre: REGGAE
 steps: 16
-hit: ....x.......x...
+hit:  ..x...x...x...x.
+alt:  ..A...x...A...x.
+alt:  ..x...x.x.x...x.
 
 name: Steppers
 genre: REGGAE
 steps: 16
-hit: ..x...x...x...x.
-
-name: Ska Upstroke
-genre: REGGAE
-steps: 16
-hit: ..x.x.x.x.x.x.x.
+hit:  ..x...x...x...x.
+alt:  ..A...A...A...A.
+alt:  ..x.x.x.x.x.x.x.
 
 name: Rockers
 genre: REGGAE
 steps: 16
-hit: x...x...x...x...
+hit:  ..x...x...x...x.
+alt:  ..x..gx...x..gx.
+alt:  x.x...x.x.x...x.
 
-name: Dancehall
+name: Nyabinghi
 genre: REGGAE
 steps: 16
-hit: x..x..x.x..x..x.
+hit:  x...x.x.x...x.x.
+alt:  A...x.x.A...x.x.
+alt:  x...x...x...x...
 
-name: Bubble
+name: Dub
 genre: REGGAE
 steps: 16
-hit: ..xx..xx..xx..xx
+hit:  ..x-......x-....
+alt:  ..A-......x.....
+alt:  ..x...x-......x.
+
+name: Rocksteady
+genre: REGGAE
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x..gx..gx...x.
+alt:  ..A...x...x...A.
+
+name: Roots
+genre: REGGAE
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x...A...x...A.
+alt:  ..x.g.x...x.g.x.
+
+name: Dbl Skank
+genre: REGGAE
+steps: 16
+hit:  ..x.x.x.x.x.x.x.
+alt:  ..A.x.x.A.x.x.x.
+alt:  ..x...x.x.x...x.
+
+name: One Drop 32
+genre: REGGAE
+steps: 32
+hit:  ..x...x...x...x...x...x...x...x.
+alt:  ..A...x...A...x...A...x...A...x.
+alt:  ..x...x.x.x...x...x...x.x.x...x.
+
+name: Skank Push
+genre: REGGAE
+steps: 16
+hit:  ..x...x...x...xx
+alt:  ..x...x...x...A.
+alt:  ..x...xx..x...x.
+
+name: Ska Upstroke
+genre: SKA
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..A...A...A...A.
+alt:  ..x..gx..gx..gx.
+
+name: 2-Tone
+genre: SKA
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x.x.x.x.x.x.x.
+alt:  ..A...x...A...x.
+
+name: Skinhead
+genre: SKA
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x..xx..xx...x.
+alt:  ..A...A...A...A.
+
+name: Ska Chop 32
+genre: SKA
+steps: 32
+hit:  ..x...x...x...x...x...x...x...x.
+alt:  ..A...x...A...x...A...x...A...x.
+alt:  ..x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.
+
+name: Ska Stab
+genre: SKA
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x.......x.....
+alt:  ..A...A...A...Ax
+
+name: Dembow DH
+genre: DANCEHALL
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  A..x..x.A..x..x.
+alt:  x..x..x.x..xx.x.
+
+name: Sleng Teng
+genre: DANCEHALL
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x..x..A.x..x..A.
+alt:  x.gx..x.x.gx..x.
+
+name: Bogle
+genre: DANCEHALL
+steps: 16
+hit:  x..x.x..x..x.x..
+alt:  A..x.x..A..x.x..
+alt:  x..x.x..x.xx.x..
+
+name: DH Steppa
+genre: DANCEHALL
+steps: 16
+hit:  x.x.x.x.x.x.x.x.
+alt:  A.x.A.x.A.x.A.x.
+alt:  x.x...x.x.x...x.
+
+name: DH Skank
+genre: DANCEHALL
+steps: 16
+hit:  ..x...x...x...x.
+alt:  x.x...x.x.x...x.
+alt:  ..A...A...A...A.
+
+name: Reggaeton
+genre: REGGAETON
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  A..x..x.A..x..x.
+alt:  x..x..x.x..x.xx.
+
+name: Perreo
+genre: REGGAETON
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x..x.gx.x..x.gx.
+alt:  A..x..x.x..A..x.
+
+name: Rtn Boom-Chick
+genre: REGGAETON
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x.....x.x.....x.
+alt:  x..x..A.x..x..A.
+
+name: Rtn Steppa
+genre: REGGAETON
+steps: 32
+hit:  x..x..x.x..x..x.x..x..x.x..x..x.
+alt:  A..x..x.A..x..x.A..x..x.A..x..x.
+alt:  x..x..x.x..x.xx.x..x..x.x..x.xx.
+
+name: Malianteo
+genre: REGGAETON
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x..xg.x.x..xg.x.
+alt:  A..x..x.A..x..x.
+
+name: Soca
+genre: SOCA
+steps: 16
+hit:  x.x.x.x.x.x.x.x.
+alt:  A.x.x.x.A.x.x.x.
+alt:  x.x.x.xxx.x.x.xx
+
+name: Groovy Soca
+genre: SOCA
+steps: 16
+hit:  x...x.x.x...x.x.
+alt:  A...x.x.A...x.x.
+alt:  x..gx.x.x..gx.x.
+
+name: Power Soca
+genre: SOCA
+steps: 16
+hit:  x.x.x.x.x.x.x.x.
+alt:  A.x.A.x.A.x.A.x.
+alt:  xxx.xxx.xxx.xxx.
+
+name: Soca Vamp 32
+genre: SOCA
+steps: 32
+hit:  x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.
+alt:  A.x.x.x.A.x.x.x.A.x.x.x.A.x.x.x.
+alt:  x.x.x.xxx.x.x.xxx.x.x.xxx.x.x.xx
+
+name: Calypso
+genre: CALYPSO
+steps: 16
+hit:  x..x.x.xx..x.x..
+alt:  A..x.x.xA..x.x..
+alt:  x..x.x..x..x.x..
+
+name: Mento
+genre: CALYPSO
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x..xx...x..xx.
+alt:  ..A...x...A...x.
+
+name: Calypso Road
+genre: CALYPSO
+steps: 16
+hit:  x.x.x.xxx.x.x.x.
+alt:  A.x.x.xxA.x.x.x.
+alt:  x.x.x..xx.x.x..x
+
+name: Biguine
+genre: CALYPSO
+steps: 16
+hit:  x..x.x.xx..x.x..
+alt:  x..x.x..x..x.x.x
+alt:  A..x.x.xA..x.x..
+
+name: Mento Skank 32
+genre: CALYPSO
+steps: 32
+hit:  ..x...x...x...x...x...x...x...x.
+alt:  ..A...x...A...x...A...x...A...x.
+alt:  ..x..xx...x..xx...x..xx...x..xx.
