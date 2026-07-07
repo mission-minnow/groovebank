@@ -1,0 +1,37 @@
+# Groove Bank — Latin / Afro-Cuban rhythm cells
+# Single-lane rhythms: hold a chord, these strike it.
+
+name: Tresillo
+genre: LATIN
+steps: 16
+hit: x..x..x.x..x..x.
+
+name: Son Clave 3-2
+genre: LATIN
+steps: 16
+hit: x..x..x...x.x...
+
+name: Rumba Clave
+genre: LATIN
+steps: 16
+hit: x..x...x..x.x...
+
+name: Bossa Clave
+genre: LATIN
+steps: 16
+hit: x..x..x...x..x..
+
+name: Cha Cha
+genre: LATIN
+steps: 16
+hit: x...x.x.x...x.x.
+
+name: Habanera
+genre: LATIN
+steps: 16
+hit: A..x.x.xx..x.x.x
+
+name: Montuno
+genre: LATIN
+steps: 16
+hit: ..x.x..x..x.x..x

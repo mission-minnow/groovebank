@@ -1,0 +1,31 @@
+# Groove Bank — Rock / Pop / Folk strum feels
+
+name: Straight 8ths
+genre: STRUM
+steps: 16
+hit: x.x.x.x.x.x.x.x.
+
+name: Off Push
+genre: STRUM
+steps: 16
+hit: x.xx.xx.x.xx.xx.
+
+name: Ballad 6-8
+genre: STRUM
+steps: 16
+hit: x..x..x..x..x..x
+
+name: Gallop
+genre: STRUM
+steps: 16
+hit: x.xxx.xxx.xxx.xx
+
+name: Long Short
+genre: STRUM
+steps: 16
+hit: A---x.A-x.A---x.
+
+name: Anthem
+genre: STRUM
+steps: 16
+hit: x---x---x-x-x---

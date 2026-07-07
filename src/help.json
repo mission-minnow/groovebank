@@ -1,0 +1,87 @@
+{
+  "title": "Groove Bank",
+  "children": [
+    {
+      "title": "Overview",
+      "lines": [
+        "Rhythm templates for the",
+        "chord you HOLD. You own",
+        "the pitches, Groove Bank",
+        "owns the timing.",
+        "",
+        "Hold a chord and the",
+        "selected groove retriggers",
+        "your notes on the beat,",
+        "into the sound generator",
+        "in the same slot. Change",
+        "the chord mid-pattern and",
+        "the next hit follows."
+      ]
+    },
+    {
+      "title": "How to use",
+      "lines": [
+        "In a chain slot:",
+        " - Sound generator: any",
+        "   synth (pad, bass, keys).",
+        " - MIDI FX: Groove Bank.",
+        "",
+        "Press Play, hold a chord",
+        "on the pads. The groove",
+        "chops it to the rhythm.",
+        "",
+        "Menu: Pattern, Globals.",
+        "",
+        "Pattern opens the grid.",
+        " - jog: cycle grooves in",
+        "   the current genre",
+        " - knob 1: gate (short <->",
+        "   long / staccato-legato)",
+        " - knob 7: swing",
+        " - knob 8: switch genre",
+        "Click/Back exit. Plays",
+        "when Move's transport runs."
+      ]
+    },
+    {
+      "title": "Grid marks",
+      "lines": [
+        "The row is pure rhythm:",
+        "",
+        " x  hit     A  accent",
+        " g  ghost (soft)",
+        " -  tie / sustain the",
+        "    previous hit",
+        " .  rest",
+        "",
+        "So 'A---' is one accented",
+        "note held for four steps.",
+        "Gate (knob 1) sets how",
+        "long the un-tied hits ring."
+      ]
+    },
+    {
+      "title": "Recording",
+      "lines": [
+        "Record the Schwung way:",
+        "Shift+Sample (Quantized",
+        "Sampler) resamples the",
+        "chain's audio to a WAV",
+        "in Samples/Schwung/."
+      ]
+    },
+    {
+      "title": "Add Your Own",
+      "lines": [
+        "Grooves are plain .groove",
+        "text files. Drop your own",
+        "in:",
+        " UserData/schwung/",
+        "  groovebank/patterns/",
+        "",
+        "See _HOWTO.txt there",
+        "for the format."
+      ]
+    }
+  ]
+}

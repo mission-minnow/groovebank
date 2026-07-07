@@ -1,0 +1,38 @@
+# Groove Bank — House / Electronic gate rhythms
+
+name: Offbeat Stab
+genre: HOUSE
+steps: 16
+hit: ..x...x...x...x.
+alt: ..x.x.x...x.x.x.
+alt: ..x.......x.....
+
+name: Four Floor
+genre: HOUSE
+steps: 16
+hit: x...x...x...x...
+
+name: Dotted 8th
+genre: HOUSE
+steps: 16
+hit: x..x..x..x..x..x
+
+name: Garage Skip
+genre: HOUSE
+steps: 16
+hit: x..x.x..x..x.x..
+
+name: Pumping 8ths
+genre: HOUSE
+steps: 16
+hit: x.x.x.x.x.x.x.x.
+
+name: Stab And Hold
+genre: HOUSE
+steps: 16
+hit: A---....A---....
+
+name: Deep Pad
+genre: HOUSE
+steps: 16
+hit: x-------x-------
