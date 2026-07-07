@@ -1,0 +1,51 @@
+# Groove Bank — Soul
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Motown
+genre: SOUL
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x.g.x.g.x.g.x.
+alt:  ..A...x...A...x.
+
+name: Stax
+genre: SOUL
+steps: 16
+hit:  x...x..gx...x..g
+alt:  x..gx.ggx..gx.gg
+alt:  A...x...A...x...
+
+name: Philly
+genre: SOUL
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x.gx.gx.x.gx.gx.
+alt:  A..x..x.A..x..x.
+
+name: Neo Soul
+genre: SOUL
+steps: 16
+hit:  x..gx..A..gx..A.
+alt:  xg.gxg.Agggxg.A.
+alt:  A...x.....x...A.
+
+name: Quiet Storm
+genre: SOUL
+steps: 16
+hit:  x.....x...x.....
+alt:  x...g.x.g.x...g.
+alt:  A.........A.....
+
+name: Shout
+genre: SOUL
+steps: 16
+hit:  x.xx.xx.x.xx.xx.
+alt:  A.xxgxxgA.xxgxxg
+alt:  x..x..x.x..x..x.
+
+name: New Jack
+genre: SOUL
+steps: 16
+hit:  x.x..x.xx.x..x.x
+alt:  A.xg.x.xAgx.gx.x
+alt:  x...x...x...x...

@@ -373,11 +373,19 @@ lockup.
   `GroovePattern.row[GB_MAX_VARIANTS]` + `variant_count`; `variant` param on K4;
   `fire_step` reads the selected variant; canvas shows `v{n}/{count}`. Verified by
   `make test` (one starter groove, "Offbeat Stab", ships with 2 alts).
-- **Stage 6 — Full library. ✅ DONE (v0.1.3).** 235 grooves / 393 variant rows /
-  32 genres, authored via 6 parallel genre-cluster research agents, normalized
-  (every row padded/truncated to `steps`, chars validated) into 6 files
-  (`src/patterns/{10-latin,20-electronic,30-caribbean,40-funksoul,50-jazzrock,60-world}.groove`).
-  All parse; `make test` green. Odd meters use natural step counts (8/10/12/14/18/20).
+- **Stage 6 — Full library. ✅ DONE (v0.1.3), then CURATED DOWN (v0.1.4).**
+  First pass: 235 grooves / 32 genres via 6 parallel research agents. Joe found
+  it too much choice + thin (within-genre exact dups, 40% cross-genre repeats,
+  too many tiny genres). Re-curated to **97 distinct roots / 198 variations /
+  14 genres** (`src/patterns/{10-house..46-world}.groove`), one file per genre.
+  Rules: no within-genre exact-dup base rows (was 16 → 0); duplicate feels folded
+  into K4 variants of one root (e.g. REGGAE's 5 identical skanks → one Skank root);
+  32→14 genres (folded electro/jungle/lofi/triphop/gospel/brazil/ska/dancehall/
+  reggaeton/soca/calypso/mideast/india into parents; kept AFRO + one WORLD).
+  Cross-genre sharing 40%→24% (remainder intrinsic: offbeat = skank = house stab).
+  Also **widened accent contrast** (`step_velocity`: A/x/g now 127/90/38 at
+  default 50, so accents pop above normal, not just above ghosts). `make test`
+  green (variant assertions made count-robust).
 - **Stage 7 — Ship:** `.github/workflows/release.yml`, docs, catalog entry,
   release synced with Charles's next Schwung release.
 

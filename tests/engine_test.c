@@ -209,16 +209,17 @@ int main(void)
     snprintf(pv, sizeof pv, "%d", oi);
     api->set_param(inst, "pattern", pv);
     api->get_param(inst, "variant_count", buf, sizeof buf);
-    CHECK(atoi(buf) == 3, "variant_count == 3 (base + 2 alts)");
+    int ovc = atoi(buf);
+    CHECK(ovc >= 3, "Offbeat Stab has multiple variants");
     api->set_param(inst, "variant", "0");
     api->get_param(inst, "row0", buf, sizeof buf);
     CHECK(strncmp(buf, "..x...x...x...x.", 16) == 0, "variant 0 = base row");
     api->set_param(inst, "variant", "1");
     api->get_param(inst, "row0", buf, sizeof buf);
     CHECK(strncmp(buf, "..x.x.x...x.x.x.", 16) == 0, "variant 1 = busy alt");
-    api->set_param(inst, "variant", "9");   /* out of range -> clamps to last */
+    api->set_param(inst, "variant", "99");   /* out of range -> clamps to last */
     api->get_param(inst, "variant", buf, sizeof buf);
-    CHECK(atoi(buf) == 2, "variant clamps to last (2)");
+    CHECK(atoi(buf) == ovc - 1, "variant clamps to last");
     snprintf(pv, sizeof pv, "%d", four);
     api->set_param(inst, "pattern", pv);
     int fvc, fvv;

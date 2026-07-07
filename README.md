@@ -2,8 +2,8 @@
 
 **A library of standard rhythm templates for [Schwung](https://github.com/charlesvestal/schwung) on the Ableton Move — played by the chord you hold.**
 
-![grooves](https://img.shields.io/badge/grooves-235-6C5CE7)
-![genres](https://img.shields.io/badge/genres-32-00B894)
+![grooves](https://img.shields.io/badge/grooves-97-6C5CE7)
+![genres](https://img.shields.io/badge/genres-14-00B894)
 ![platform](https://img.shields.io/badge/platform-Ableton%20Move-2D3436)
 ![module](https://img.shields.io/badge/Schwung-MIDI%20FX-0984E3)
 
@@ -107,17 +107,21 @@ K7 = swing, K8 = genre.
 
 ## 🎵 Genres
 
-**235 grooves across 32 genres**, each with a base rhythm + authored flavors:
+**97 grooves across 14 genres** — each a *distinct* root with a few authored
+flavors (base + variations on Knob 4). Curated, not padded: no two grooves in a
+genre share a rhythm.
 
-> **Latin/World** — Latin (clave, tresillo, montuno, cascara…) · Brazil (bossa, samba, baião…) · Afro · Mideast (maqsum, baladi, saidi…) · India (teental, keherwa…) · World
-> **Electronic** — house · techno · electro · garage · dnb · jungle · dubstep · breaks
-> **Caribbean** — reggae · ska · dancehall · reggaeton · soca · calypso
-> **Groove** — funk · soul · gospel · rnb · hip-hop · trap · lofi · trip-hop
-> **Band** — jazz · rock · pop · strum (folk / flamenco / bluegrass…)
+> **Electronic** — house · techno · garage · drum & bass
+> **Urban** — hip-hop · trap
+> **Groove** — funk · soul
+> **Band** — jazz · rock *(+ pop / folk strum)*
+> **Roots** — latin *(clave family + bossa/samba)* · reggae *(skank/ska/dub/dembow/soca/calypso)*
+> **World** — afro *(afrobeat/highlife/soukous)* · world *(maqsum/baladi/buleria/balkan)*
 
 Browse genre-first: the jog cycles grooves inside a genre; Knob 8 jumps between
-genres. Odd-meter traditions use their natural step counts (12 for 6/8 & 3/4,
-14 for 7/8, etc.), so the world/jazz-waltz grooves feel right.
+genres; Knob 4 morphs a groove's flavors. Odd-meter traditions use their natural
+step counts (12 for 6/8 & 3/4, 18 for 9/8), so the world/jazz-waltz grooves feel
+right.
 
 ---
 

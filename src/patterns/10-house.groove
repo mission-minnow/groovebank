@@ -1,0 +1,53 @@
+# Groove Bank — House
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Four Floor
+genre: HOUSE
+steps: 16
+hit:  x...x...x...x...
+alt:  A...x...A...x...
+alt:  x...x...x...x..x
+alt:  x..xx...x..xx...
+
+name: Offbeat Stab
+genre: HOUSE
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x.x.x...x.x.x.
+alt:  ..A...x...A...x.
+alt:  ..x.......x.....
+
+name: Deep Chord
+genre: HOUSE
+steps: 16
+hit:  ..x-..x-..x-..x-
+alt:  ..x-......x-....
+alt:  ..A-..x-..A-..x-
+
+name: Jackin
+genre: HOUSE
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x..x..A.x..x..A.
+alt:  x.gx..x.x.gx..x.
+
+name: Disco
+genre: HOUSE
+steps: 16
+hit:  ..x.x..x..x.x..x
+alt:  ..x.x.x.x.x.x.x.
+alt:  ..A.x..A..x.x..x
+
+name: Piano Stab
+genre: HOUSE
+steps: 16
+hit:  x...x..xx...x..x
+alt:  x...x...x...x...
+alt:  A...x..xA...x..x
+
+name: Soulful
+genre: HOUSE
+steps: 16
+hit:  x..x.x..x..x.x..
+alt:  x...x...x...x...
+alt:  x..x.gx.x..x.gx.

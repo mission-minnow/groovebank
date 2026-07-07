@@ -1,0 +1,58 @@
+# Groove Bank — Rock
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Straight 8ths
+genre: ROCK
+steps: 16
+hit:  x.x.x.x.x.x.x.x.
+alt:  A.x.x.x.A.x.x.x.
+alt:  x...x...x...x...
+
+name: Offbeat
+genre: ROCK
+steps: 16
+hit:  ..x...x...x...x.
+alt:  ..x.x.x...x.x.x.
+alt:  ..A...x...A...x.
+
+name: Gallop
+genre: ROCK
+steps: 16
+hit:  x.xxx.xxx.xxx.xx
+alt:  x.x.x.x.x.x.x.x.
+alt:  xxx.xxx.xxx.xxx.
+
+name: Power Push
+genre: ROCK
+steps: 16
+hit:  x...x...x..x..x.
+alt:  x...x...x..x.x.x
+alt:  x...x...x...x...
+
+name: Ballad
+genre: ROCK
+steps: 16
+hit:  x.......x.......
+alt:  x.......x-....x.
+alt:  x...x...x...x...
+
+name: Anthem
+genre: ROCK
+steps: 16
+hit:  x...x...x.x.x...
+alt:  A...x...A.x.x...
+alt:  x...x...x...x...
+
+name: Punk
+genre: ROCK
+steps: 16
+hit:  xxxxxxxxxxxxxxxx
+alt:  x.xxx.xxx.xxx.xx
+alt:  xxxxxxxx.xxxxxx.
+
+name: Folk Strum
+genre: ROCK
+steps: 16
+hit:  x---x-x-x-x-x-x-
+alt:  x---x-x-x-x-x-xx
+alt:  x---x---x-x-x---

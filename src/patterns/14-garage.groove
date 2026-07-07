@@ -1,0 +1,44 @@
+# Groove Bank — Garage
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: 2-Step
+genre: GARAGE
+steps: 16
+hit:  x.....x..x....x.
+alt:  x.....x..x.x..x.
+alt:  x.....x..x......
+
+name: UK Garage
+genre: GARAGE
+steps: 16
+hit:  x..x.x..x..x.x..
+alt:  x..x.x..x.x.x.x.
+alt:  A..x.x..A..x.x..
+
+name: Speed Garage
+genre: GARAGE
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x..x..x.x..x.xx.
+alt:  A..x..x.A..x..x.
+
+name: Bassline
+genre: GARAGE
+steps: 16
+hit:  x..x.xx.x..x.xx.
+alt:  x..x..x.x..x..x.
+alt:  x..x.xx.x.xx.xx.
+
+name: 4x4 Garage
+genre: GARAGE
+steps: 16
+hit:  x...xx..x...xx..
+alt:  x...x...x...x...
+alt:  A...xx..A...xx..
+
+name: Future
+genre: GARAGE
+steps: 16
+hit:  ..x....x..x.....
+alt:  ..x.......x....x
+alt:  ..x-...x..x-....

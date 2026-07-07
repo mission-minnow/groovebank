@@ -1,0 +1,44 @@
+# Groove Bank — Techno
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Driving
+genre: TECHNO
+steps: 16
+hit:  ..x...x...x...xx
+alt:  ..x...x...x...x.
+alt:  ..A...A...A...A.
+
+name: Minimal
+genre: TECHNO
+steps: 16
+hit:  ..x.......x.....
+alt:  ..x.............
+alt:  ..x.....x.......
+
+name: Dub Techno
+genre: TECHNO
+steps: 16
+hit:  ..A-..x-..A-..x-
+alt:  ..x-..x-..x-..x-
+alt:  ..A-......A-....
+
+name: Acid
+genre: TECHNO
+steps: 16
+hit:  x.x..x.x.x..x.x.
+alt:  x.x.x.x.x.x.x.x.
+alt:  A.x..x.A.x..x.x.
+
+name: Detroit
+genre: TECHNO
+steps: 16
+hit:  x..x.x..x..x.x..
+alt:  x...x...x...x...
+alt:  x..x.x..x.xx.x..
+
+name: Hypnotic
+genre: TECHNO
+steps: 16
+hit:  x..gx..gx..gx..g
+alt:  x...x...x...x...
+alt:  A..gx..gA..gx..g

@@ -1,0 +1,58 @@
+# Groove Bank — Funk
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Charleston
+genre: FUNK
+steps: 16
+hit:  x......x........
+alt:  x......x....x...
+alt:  A......gx.......
+
+name: 16th Comp
+genre: FUNK
+steps: 16
+hit:  x.xxg.xxx.xxg.xx
+alt:  A.gxg.xxA.gxg.gx
+alt:  x..x..x...x..x..
+
+name: Scratch
+genre: FUNK
+steps: 16
+hit:  g.Axg.xgg.Axg.xg
+alt:  gxAxgxxggxAxgxxg
+alt:  g..A..g.g..A..g.
+
+name: Clav
+genre: FUNK
+steps: 16
+hit:  x.g.A.gxx.g.A.gx
+alt:  xgg.AggxxggAAggx
+alt:  x...A...x...A...
+
+name: Second Line
+genre: FUNK
+steps: 16
+hit:  x..x.gx.gx..x.g.
+alt:  A..x.gxggxg.x.gg
+alt:  x..x..x..x..x...
+
+name: JB Push
+genre: FUNK
+steps: 16
+hit:  A..g..A.g..A..g.
+alt:  A.ggg.Aggg.AgggA
+alt:  A.....A....A....
+
+name: Ghost Chop
+genre: FUNK
+steps: 16
+hit:  xg.gxg.gxg.gxg.g
+alt:  Ag.gxggAAg.gxggA
+alt:  x...x...x...x...
+
+name: Disco Funk
+genre: FUNK
+steps: 16
+hit:  x...A...x...A..x
+alt:  x..gA..gx..gA.gx
+alt:  A...x...A...x...

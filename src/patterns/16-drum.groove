@@ -1,0 +1,51 @@
+# Groove Bank — Drum & Bass
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Two-Step
+genre: DNB
+steps: 16
+hit:  x.....x...x...x.
+alt:  x.....x...x.....
+alt:  x.....x...x...xx
+
+name: Liquid
+genre: DNB
+steps: 16
+hit:  x..x..x...x..x..
+alt:  x.....x...x.....
+alt:  x..x..x.g.x..x..
+
+name: Rollers
+genre: DNB
+steps: 16
+hit:  x.xx.xx.x.xx.xx.
+alt:  x.x.x.x.x.x.x.x.
+alt:  A.xx.xx.A.xx.xx.
+
+name: Neurofunk
+genre: DNB
+steps: 16
+hit:  x...x..x.x..x.x.
+alt:  x...x...x...x...
+alt:  A...x..x.A..x.x.
+
+name: Jump Up
+genre: DNB
+steps: 16
+hit:  x..x..x..x..x..x
+alt:  x..x..x.x..x..x.
+alt:  A..x..A..A..x..x
+
+name: Amen
+genre: DNB
+steps: 16
+hit:  x..gx.xgx..gx.xg
+alt:  x...x...x...x...
+alt:  x..gx.xg.x..gx.x
+
+name: Jungle
+genre: DNB
+steps: 16
+hit:  x..x.x..gx.x..x.
+alt:  x..x.x..x..x..x.
+alt:  x...gx.xg.x.gx..

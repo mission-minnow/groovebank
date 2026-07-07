@@ -1,0 +1,51 @@
+# Groove Bank — Hip-Hop
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Boom Bap
+genre: HIPHOP
+steps: 16
+hit:  x.......x..x....
+alt:  x...g...x..x.g..
+alt:  A.......x..A....
+
+name: G-Funk
+genre: HIPHOP
+steps: 16
+hit:  x...x....x.x....
+alt:  x..gx...gx.xg...
+alt:  A...x......x....
+
+name: East Coast
+genre: HIPHOP
+steps: 16
+hit:  x....x.x...x..x.
+alt:  x..g.x.xg..x.gx.
+alt:  A....x.....x....
+
+name: Dilla
+genre: HIPHOP
+steps: 16
+hit:  x.....x..gx....A
+alt:  x..g..xg.gx.g..A
+alt:  A........x......
+
+name: Lofi
+genre: HIPHOP
+steps: 16
+hit:  x.....x....x....
+alt:  x..g..xg...x..g.
+alt:  A.....x....x....
+
+name: Chillhop
+genre: HIPHOP
+steps: 16
+hit:  x....x..x...x...
+alt:  x.g..x.gx.g.x.g.
+alt:  A....x......x...
+
+name: Trip Hop
+genre: HIPHOP
+steps: 16
+hit:  x.......x...x...
+alt:  x....g..x.g.x...
+alt:  A.......x.......

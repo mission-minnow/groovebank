@@ -1,0 +1,44 @@
+# Groove Bank — Trap
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Trap Stab
+genre: TRAP
+steps: 16
+hit:  x..........x....
+alt:  x......x...x....
+alt:  A..........A....
+
+name: Half-Time
+genre: TRAP
+steps: 16
+hit:  x.......A.......
+alt:  x....x..A....x..
+alt:  A.......x.......
+
+name: Drill
+genre: TRAP
+steps: 16
+hit:  x.....x....x...x
+alt:  x..g..x.g..x.g.x
+alt:  A.....x....A....
+
+name: Dark Stab
+genre: TRAP
+steps: 16
+hit:  x.........x.....
+alt:  x.....x...x...x.
+alt:  A.........A.....
+
+name: Bounce
+genre: TRAP
+steps: 16
+hit:  x..x....x...x..x
+alt:  x..xg..gx..gx..x
+alt:  A..x....A...x...
+
+name: Trap Roll
+genre: TRAP
+steps: 16
+hit:  x..............x
+alt:  x.......x......x
+alt:  A.......gg.....A

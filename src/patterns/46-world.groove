@@ -1,0 +1,44 @@
+# Groove Bank — World
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Maqsum
+genre: WORLD
+steps: 16
+hit:  A.x.x.A.x.x.x...
+alt:  A.x.xxA.x.x.xx..
+alt:  A.x.x.A.x.A...x.
+
+name: Baladi
+genre: WORLD
+steps: 16
+hit:  A.A.x.x.x.x.x...
+alt:  A.A.x.xxx.x.xx..
+alt:  A.A.x.x.A.x.x.x.
+
+name: Teental
+genre: WORLD
+steps: 16
+hit:  A.x.x.x.A.x.x.x.
+alt:  A.x.x.x.g.x.x.x.
+alt:  A.xxx.x.A.xxx.x.
+
+name: Buleria
+genre: WORLD
+steps: 12
+hit:  x.xx.xx.x.x.
+alt:  A.xA.xA.xx.x
+alt:  x.x.xx.x.x.x
+
+name: Balkan 9
+genre: WORLD
+steps: 18
+hit:  A.x.A.x.A.x.A.x.x.
+alt:  A.x.x.A.x.x.A.x.x.
+alt:  A.x.A.x.x.A.x.A.x.
+
+name: Tango
+genre: WORLD
+steps: 16
+hit:  A...x.x.A...x.x.
+alt:  A.x.x.x.A...x.A.
+alt:  A...x.A.x...x.A.

@@ -1,0 +1,44 @@
+# Groove Bank — Afro
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Standard Bell
+genre: AFRO
+steps: 12
+hit:  x.x.xx.x.x.x
+alt:  x.xx.x.xx.x.
+alt:  A.x.xx.x.A.x
+
+name: Highlife
+genre: AFRO
+steps: 16
+hit:  x.xxx.x.x.xxx.x.
+alt:  x.xx.xx.x.xx.xx.
+alt:  A.xxx.x.A.xxx.x.
+
+name: Afrobeat
+genre: AFRO
+steps: 16
+hit:  x.x.xxx.x.x.xxx.
+alt:  A.x.xxg.A.x.xxg.
+alt:  x.x.x.x.x.x.x.x.
+
+name: Soukous
+genre: AFRO
+steps: 16
+hit:  x.xxx.xxx.xxx.x.
+alt:  x.xx.xxx.xx.xxx.
+alt:  A.xxx.xxA.xxx.x.
+
+name: Makossa
+genre: AFRO
+steps: 16
+hit:  x.x.xx.xx.x.xx.x
+alt:  A.x.xxg.A.x.xxg.
+alt:  x.x.x.xx.x.x.xx.
+
+name: Mbaqanga
+genre: AFRO
+steps: 16
+hit:  x.xx.x.xx.xx.x.x
+alt:  x.xx.xx.x.xx.xx.
+alt:  A.xx.x.xA.xx.x.x

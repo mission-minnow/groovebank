@@ -1,0 +1,51 @@
+# Groove Bank — Jazz
+# Hold a chord; these strike it. K4 morphs the alt: flavors.
+
+name: Charleston
+genre: JAZZ
+steps: 16
+hit:  x......x........
+alt:  x......x......x.
+alt:  ..x....x........
+
+name: Comp 2 And 4
+genre: JAZZ
+steps: 16
+hit:  ......x.....x...
+alt:  ..x.........x..x
+alt:  ......x...x..x..
+
+name: Freddie Green
+genre: JAZZ
+steps: 16
+hit:  x...x...x...x...
+alt:  x...g...x...g...
+alt:  A...x...A...x...
+
+name: Bossa Comp
+genre: JAZZ
+steps: 16
+hit:  x..x..x...x..x..
+alt:  x..x..x..x..x..x
+alt:  x..x....x..x....
+
+name: Afro-Cuban
+genre: JAZZ
+steps: 16
+hit:  x..x..x.x..x..x.
+alt:  x..x..x.x..x.x..
+alt:  x..x....x..x..x.
+
+name: Jazz Waltz
+genre: JAZZ
+steps: 12
+hit:  x...x..x....
+alt:  x...x..x..x.
+alt:  x......x....
+
+name: Ballad
+genre: JAZZ
+steps: 16
+hit:  x.......x-......
+alt:  x.......x-....x.
+alt:  x...............

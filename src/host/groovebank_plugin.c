@@ -145,15 +145,16 @@ static uint16_t gate_clocks(const GrooveBankInstance *gi)
     return gc < 1u ? 1u : gc;
 }
 
-/* Velocity for a step char, scaled by the accent param (0 = flat @100, 50 =
- * classic 40/100/122 spread, 100 = extreme). Rests / ties return 0. */
+/* Velocity for a step char, scaled by the accent param. 0 = flat @100; at the
+ * default 50 the spread is wide (A 127 / x 90 / g 38) so accents clearly pop
+ * above normal hits, not just above ghosts; 100 = extreme. Rests / ties = 0. */
 static uint8_t step_velocity(const GrooveBankInstance *gi, char c)
 {
     int acc = gi->accent;   /* 0..100 */
     switch (c) {
-        case 'A': case 'X': { int v = 100 + (22 * acc) / 50; return v > 127 ? 127 : (uint8_t)v; }
-        case 'x':           return 100u;
-        case 'g': case 'o': { int v = 100 - (60 * acc) / 50; return v < 5   ? 5   : (uint8_t)v; }
+        case 'A': case 'X': { int v = 100 + (27 * acc) / 50; return v > 127 ? 127 : (uint8_t)v; }
+        case 'x':           { int v = 100 - (acc / 5);       return v < 1   ? 1   : (uint8_t)v; }
+        case 'g': case 'o': { int v = 100 - (62 * acc) / 50; return v < 5   ? 5   : (uint8_t)v; }
         default:            return 0u;
     }
 }
