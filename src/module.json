@@ -2,7 +2,7 @@
     "id": "groovebank",
     "name": "Groove Bank",
     "abbrev": "GRUV",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "Retrigger the chord you hold on a library of standard rhythm templates — genre-first grooves, played by your hands.",
     "author": "Mission Minnow",
     "api_version": 2,
@@ -23,8 +23,8 @@
                 },
                 "globals": {
                     "name": "Globals",
-                    "params": ["variant", "swing", "gate", "strum", "accent"],
-                    "knobs": ["variant", "swing", "gate", "strum", "accent"]
+                    "params": ["variant", "strum", "gate", "accent", "swing"],
+                    "knobs": ["variant", "strum", "gate", "accent", "swing"]
                 }
             }
         }

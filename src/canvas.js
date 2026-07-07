@@ -4,25 +4,24 @@
  * Groove Bank retriggers the chord you HOLD on the selected rhythm template.
  * The pattern is pure rhythm (one row); the pitches are your live hands.
  *
- * Bank-family controls (mirror Beat Bank — see bank-family-ux-convention):
- *   - jog turn         -> cycle patterns WITHIN the current genre
- *   - Knob 7 turn       -> swing (0..100)
- *   - Knob 8 turn       -> switch genre (geared: ~8 genres per rotation)
- *   - jog click / Back -> exit
- * Module-specific (K1-K6 band):
- *   - Knob 1 turn       -> gate length (staccato <-> legato)
+ * Controls:
+ *   - jog turn          -> cycle patterns WITHIN the current genre
+ *   - Knob 1 turn       -> variant (shown in the title as [+], [++], ...)
  *   - Knob 2 turn       -> strum (bipolar: <0 down-strum, >0 up-strum, 0 tight)
- *   - Knob 3 turn       -> accent depth (velocity spread; 0 = flat)
- *   - Knob 4 turn       -> variant (morph the groove's authored flavors)
+ *   - Knob 3 turn       -> gate length (staccato <-> legato)
+ *   - Knob 4 turn       -> accent depth (velocity spread; 0 = flat)
+ *   - Knob 7 turn       -> swing (0..100)
+ *   - Knob 8 turn       -> switch genre (geared)
+ *   - jog click / Back  -> exit
  */
 
 'use strict';
 
 const CC_JOG = 14;
-const CC_GATE = 71;    /* K1 = gate length (staccato <-> legato) */
+const CC_VARIANT = 71; /* K1 = variant (shown in the title) */
 const CC_STRUM = 72;   /* K2 = strum (bipolar) */
-const CC_ACCENT = 73;  /* K3 = accent depth */
-const CC_VARIANT = 74; /* K4 = variant (authored flavors) */
+const CC_GATE = 73;    /* K3 = gate length (staccato <-> legato) */
+const CC_ACCENT = 74;  /* K4 = accent depth */
 const CC_SWING = 77;   /* K7 = swing */
 const CC_GENRE = 78;   /* K8 = genre */
 const SWING_STEP = 5;
@@ -30,14 +29,16 @@ const GATE_STEP = 5;
 const STRUM_STEP = 5;
 const ACCENT_STEP = 5;
 
-/* K8 is geared down (endless encoder): several detents per genre so the list is
- * less twitchy. ~8 genres per physical revolution. Family convention. */
+/* K1 (variant) and K8 (genre) are geared down on the endless encoder — several
+ * detents per step so the short variant list and long genre list aren't twitchy. */
 const GENRE_DETENTS_PER_STEP = 3;
+const VARIANT_DETENTS_PER_STEP = 3;
 let genreAccum = 0;
+let variantAccum = 0;
 
 const g = {
   count: 1, pattern: 0, steps: 16, name: '', genre: '',
-  swing: 0, gate: 80, strum: 0, accent: 50, held: 0,
+  swing: 0, gate: 80, strum: 0, accent: 50,
   variant: 0, vcount: 1,
   row: '',
   genres: [],   /* [{name, start, count}] */
@@ -90,7 +91,6 @@ function load(ctx, force) {
   g.accent = gpi(ctx, 'accent', g.accent);
   g.variant = gpi(ctx, 'variant', g.variant);
   g.vcount = Math.max(1, gpi(ctx, 'variant_count', 1));
-  g.held = gpi(ctx, 'held_count', 0);
 }
 
 function setPattern(ctx, p) {
@@ -156,9 +156,12 @@ function draw(ctx) {
   const ge = g.genres[gi] || { name: g.genre, start: 0, count: g.count };
   const pos = (g.pattern - ge.start) + 1;
 
-  ctx.print(0, 0, (g.name || '').slice(0, 14), 1);       /* pattern name */
-  if (g.vcount > 1) ctx.print(84, 0, 'v' + (g.variant + 1) + '/' + g.vcount, 1);   /* flavor */
-  ctx.print(108, 0, pos + '/' + ge.count, 1);
+  /* Title: "1 <name>[++]   x/y" — K1 morphs the variant, shown as + marks
+   * (base = no marks, variant 1 = [+], 2 = [++], ...). x/y = spot in genre. */
+  const plus = g.variant > 0 ? '[' + '+'.repeat(g.variant) + ']' : '';
+  const nm = (g.name || '').slice(0, 13 - plus.length);
+  ctx.print(0, 0, '1 ' + nm + plus, 1);
+  ctx.print(104, 0, pos + '/' + ge.count, 1);
 
   /* Single rhythm row rendered as a wide step grid. The pitches are your hands,
    * so there's one lane; each cell shows hit / accent / ghost / tie. */
@@ -195,15 +198,16 @@ function draw(ctx) {
     }
   }
 
-  /* strum (K2, bipolar) + accent (K3) + held-note count */
+  /* Footer: knob-numbered 2x2 grid (K2 strum, K3 gate, K7 swing, K8 genre). */
   const st = (g.strum > 0 ? '+' : '') + g.strum;
-  ctx.print(0, 46, 'h' + g.held + ' st:' + st + ' ac:' + g.accent, 1);
-
-  ctx.print(0, 57, 'sw:' + g.swing + ' gt:' + g.gate + '  K8: ' + (ge.name || '').slice(0, 8), 1);
+  ctx.print(0, 50, '2 Strum ' + st, 1);
+  ctx.print(66, 50, '3 Gate ' + g.gate, 1);
+  ctx.print(0, 58, '7 Swing ' + g.swing, 1);
+  ctx.print(66, 58, '8 ' + (ge.name || '').slice(0, 8), 1);
 }
 
 globalThis.canvas_overlay = {
-  onOpen(ctx) { g.genres = []; genreAccum = 0; load(ctx, true); },
+  onOpen(ctx) { g.genres = []; genreAccum = 0; variantAccum = 0; load(ctx, true); },
   tick(ctx) { load(ctx, false); },
   draw(ctx) { draw(ctx); return true; },
   onMidi(ctx, payload) {
@@ -213,11 +217,17 @@ globalThis.canvas_overlay = {
     if (type !== 0xB0 || b2 === 0) return;   /* encoders: 1..63 = +, 64..127 = - */
     const dir = b2 < 64 ? 1 : -1;
     if (b1 === CC_JOG)    { cyclePattern(ctx, dir); return; }
-    if (b1 === CC_SWING)  { setSwing(ctx, dir); return; }
+    if (b1 === CC_STRUM)  { setStrum(ctx, dir); return; }
     if (b1 === CC_GATE)   { setGate(ctx, dir); return; }
-    if (b1 === CC_STRUM)   { setStrum(ctx, dir); return; }
-    if (b1 === CC_ACCENT)  { setAccent(ctx, dir); return; }
-    if (b1 === CC_VARIANT) { setVariant(ctx, dir); return; }
+    if (b1 === CC_ACCENT) { setAccent(ctx, dir); return; }
+    if (b1 === CC_SWING)  { setSwing(ctx, dir); return; }
+    if (b1 === CC_VARIANT) {                        /* geared, like genre */
+      if (dir * variantAccum < 0) variantAccum = 0;
+      variantAccum += dir;
+      while (variantAccum >= VARIANT_DETENTS_PER_STEP)  { setVariant(ctx,  1); variantAccum -= VARIANT_DETENTS_PER_STEP; }
+      while (variantAccum <= -VARIANT_DETENTS_PER_STEP) { setVariant(ctx, -1); variantAccum += VARIANT_DETENTS_PER_STEP; }
+      return;
+    }
     if (b1 === CC_GENRE) {
       if (dir * genreAccum < 0) genreAccum = 0;   /* reversing drops stale travel */
       genreAccum += dir;

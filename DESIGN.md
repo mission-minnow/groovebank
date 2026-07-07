@@ -125,17 +125,16 @@ Bank puts *per-drum-voice pad selectors* on K1–K6. Groove Bank has **no drum
 voices** (pitch is your live hands), so nothing pad-like to edit there — that band
 is repurposed for articulation, the one justified divergence:
 
-**This module's K1–K6 edits [MODULE]:**
-- **K1 — Gate** length (staccato ↔ legato, incl. >100% overlap). Uniform
-  articulation character; per-step ties (`-`) handle rhythmic sustains (§4).
-- **K2 — Strum** (bipolar, center-detent): center = tight block chord; clockwise =
-  up-strum (low→high) widening; counter-clockwise = down-strum (high→low)
-  widening. One knob = direction + amount ("reggae bubble / guitar strum / stab").
-- **K3 — Accent** depth (velocity spread between `A` / `x` / `g`).
-- **K4 — Variant** (§4): morph the groove's authored `alt:` flavors
-  (regular/busy/sparse/…), one flavor per detent. Built (v0.1.2).
-- **K5–K6 — reserved.** Candidates: octave shift, latch on/off, humanize,
-  held-note limit.
+**This module's K1–K6 edits [MODULE]:** (reworked in the v0.1.5 UI cleanup)
+- **K1 — Variant** (geared like K8, `VARIANT_DETENTS_PER_STEP`): morph the groove's
+  authored `alt:` flavors. Shown **in the title** as `1 <name>[++]  x/y` (base = no
+  marks; each variant adds a `+`), so it doesn't crowd the footer.
+- **K2 — Strum** (bipolar, center-detent): tight block ↔ up-strum (CW) / down-strum (CCW).
+- **K3 — Gate** length (staccato ↔ legato, incl. >100% overlap).
+- **K4 — Accent** depth (velocity spread A/x/g; wide default so accents pop). NOTE:
+  not shown in the footer — open UI question (keep hidden / show / drop the knob).
+- **Footer** is a knob-numbered 2×2: `2 Strum · 3 Gate` / `7 Swing · 8 <GENRE>`
+  (the diagnostic held-count `h` was removed). K5–K6 reserved.
 
 ---
 
