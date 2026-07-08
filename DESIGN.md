@@ -131,10 +131,10 @@ is repurposed for articulation, the one justified divergence:
   marks; each variant adds a `+`), so it doesn't crowd the footer.
 - **K2 — Strum** (bipolar, center-detent): tight block ↔ up-strum (CW) / down-strum (CCW).
 - **K3 — Gate** length (staccato ↔ legato, incl. >100% overlap).
-- **K4 — Accent** depth (velocity spread A/x/g; wide default so accents pop). NOTE:
-  not shown in the footer — open UI question (keep hidden / show / drop the knob).
-- **Footer** is a knob-numbered 2×2: `2 Strum · 3 Gate` / `7 Swing · 8 <GENRE>`
-  (the diagnostic held-count `h` was removed). K5–K6 reserved.
+- **K4 — Accent** depth (velocity spread A/x/g; wide default so accents pop).
+- **Footer** is knob-numbered, 3 rows: **left column = the feel knobs** (`2 Strum`,
+  `3 Gate`, `4 Accent`), **right column = the anchors** (`7 Sw`, `8 <GENRE>`). The
+  diagnostic held-count `h` was removed. K5–K6 reserved.
 
 ---
 

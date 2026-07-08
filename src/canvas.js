@@ -169,8 +169,8 @@ function draw(ctx) {
   const row = g.row || '';
   const gridX = 4, gridW = 120;
   const cellW = Math.max(2, Math.floor(gridW / steps));
-  const baseY = 36;          /* baseline of the row (shrunk to fit footer)   */
-  const fullH = 15;          /* normal hit height                            */
+  const baseY = 34;          /* baseline of the row (shrunk to fit 3-row footer) */
+  const fullH = 13;          /* normal hit height                            */
 
   /* beat ticks (every 4 steps) as faint anchors */
   for (let s = 0; s < steps; s += 4) {
@@ -198,13 +198,15 @@ function draw(ctx) {
     }
   }
 
-  /* Footer: knob-numbered 2x2 grid (K2 strum, K3 gate, K7 swing, K8 genre).
-   * Both rows sit above y63 so nothing clips off the 64px panel. */
+  /* Footer: knob-numbered. Left column = the three feel knobs (K2 strum,
+   * K3 gate, K4 accent); right column = the anchors (K7 swing, K8 genre).
+   * All rows sit above y63 so nothing clips off the 64px panel. */
   const st = (g.strum > 0 ? '+' : '') + g.strum;
-  ctx.print(0, 46, '2 Strum ' + st, 1);
-  ctx.print(66, 46, '3 Gate ' + g.gate, 1);
-  ctx.print(0, 55, '7 Swing ' + g.swing, 1);
-  ctx.print(66, 55, '8 ' + (ge.name || '').slice(0, 8), 1);
+  ctx.print(0, 40,  '2 Strum ' + st, 1);
+  ctx.print(76, 40, '7 Sw ' + g.swing, 1);
+  ctx.print(0, 48,  '3 Gate ' + g.gate, 1);
+  ctx.print(76, 48, '8 ' + (ge.name || '').slice(0, 8), 1);
+  ctx.print(0, 56,  '4 Accent ' + g.accent, 1);
 }
 
 globalThis.canvas_overlay = {
