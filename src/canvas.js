@@ -169,8 +169,8 @@ function draw(ctx) {
   const row = g.row || '';
   const gridX = 4, gridW = 120;
   const cellW = Math.max(2, Math.floor(gridW / steps));
-  const baseY = 40;          /* baseline of the row                          */
-  const fullH = 18;          /* normal hit height                            */
+  const baseY = 36;          /* baseline of the row (shrunk to fit footer)   */
+  const fullH = 15;          /* normal hit height                            */
 
   /* beat ticks (every 4 steps) as faint anchors */
   for (let s = 0; s < steps; s += 4) {
@@ -198,12 +198,13 @@ function draw(ctx) {
     }
   }
 
-  /* Footer: knob-numbered 2x2 grid (K2 strum, K3 gate, K7 swing, K8 genre). */
+  /* Footer: knob-numbered 2x2 grid (K2 strum, K3 gate, K7 swing, K8 genre).
+   * Both rows sit above y63 so nothing clips off the 64px panel. */
   const st = (g.strum > 0 ? '+' : '') + g.strum;
-  ctx.print(0, 50, '2 Strum ' + st, 1);
-  ctx.print(66, 50, '3 Gate ' + g.gate, 1);
-  ctx.print(0, 58, '7 Swing ' + g.swing, 1);
-  ctx.print(66, 58, '8 ' + (ge.name || '').slice(0, 8), 1);
+  ctx.print(0, 46, '2 Strum ' + st, 1);
+  ctx.print(66, 46, '3 Gate ' + g.gate, 1);
+  ctx.print(0, 55, '7 Swing ' + g.swing, 1);
+  ctx.print(66, 55, '8 ' + (ge.name || '').slice(0, 8), 1);
 }
 
 globalThis.canvas_overlay = {
