@@ -10,6 +10,7 @@
  *   - Knob 2 turn       -> strum (bipolar: <0 down-strum, >0 up-strum, 0 tight)
  *   - Knob 3 turn       -> gate length (staccato <-> legato)
  *   - Knob 4 turn       -> accent depth (velocity spread; 0 = flat)
+ *   - Knob 5 turn       -> latch on (CW) / off (CCW): held chord sticks
  *   - Knob 7 turn       -> swing (0..100)
  *   - Knob 8 turn       -> switch genre (geared)
  *   - jog click / Back  -> exit
@@ -22,6 +23,7 @@ const CC_VARIANT = 71; /* K1 = variant (shown in the title) */
 const CC_STRUM = 72;   /* K2 = strum (bipolar) */
 const CC_GATE = 73;    /* K3 = gate length (staccato <-> legato) */
 const CC_ACCENT = 74;  /* K4 = accent depth */
+const CC_LATCH = 75;   /* K5 = latch (CW on / CCW off) */
 const CC_SWING = 77;   /* K7 = swing */
 const CC_GENRE = 78;   /* K8 = genre */
 const SWING_STEP = 5;
@@ -38,7 +40,7 @@ let variantAccum = 0;
 
 const g = {
   count: 1, pattern: 0, steps: 16, name: '', genre: '',
-  swing: 0, gate: 80, strum: 0, accent: 50,
+  swing: 0, gate: 80, strum: 0, accent: 50, latch: 0,
   variant: 0, vcount: 1,
   row: '',
   genres: [],   /* [{name, start, count}] */
@@ -89,6 +91,7 @@ function load(ctx, force) {
   g.gate = gpi(ctx, 'gate', g.gate);
   g.strum = gpi(ctx, 'strum', g.strum);
   g.accent = gpi(ctx, 'accent', g.accent);
+  g.latch = gpi(ctx, 'latch', g.latch);
   g.variant = gpi(ctx, 'variant', g.variant);
   g.vcount = Math.max(1, gpi(ctx, 'variant_count', 1));
 }
@@ -141,6 +144,13 @@ function setAccent(ctx, delta) {
   if (v === g.accent) return;
   g.accent = v;
   ctx.setParam('accent', String(v));
+}
+
+function setLatch(ctx, on) {
+  const v = on ? 1 : 0;
+  if (v === g.latch) return;
+  g.latch = v;
+  ctx.setParam('latch', String(v));
 }
 
 function setVariant(ctx, delta) {
@@ -205,8 +215,9 @@ function draw(ctx) {
   ctx.print(0, 40,  '2 Strum ' + st, 1);
   ctx.print(76, 40, '7 Sw ' + g.swing, 1);
   ctx.print(0, 48,  '3 Gate ' + g.gate, 1);
-  ctx.print(76, 48, '8 ' + (ge.name || '').slice(0, 8), 1);
+  ctx.print(76, 48, '8 ' + (ge.name || '').slice(0, 7), 1);
   ctx.print(0, 56,  '4 Accent ' + g.accent, 1);
+  ctx.print(76, 56, '5 ' + (g.latch ? 'LATCH' : 'latch'), 1);   /* caps = on */
 }
 
 globalThis.canvas_overlay = {
@@ -223,6 +234,7 @@ globalThis.canvas_overlay = {
     if (b1 === CC_STRUM)  { setStrum(ctx, dir); return; }
     if (b1 === CC_GATE)   { setGate(ctx, dir); return; }
     if (b1 === CC_ACCENT) { setAccent(ctx, dir); return; }
+    if (b1 === CC_LATCH)  { setLatch(ctx, dir > 0); return; }   /* CW on, CCW off */
     if (b1 === CC_SWING)  { setSwing(ctx, dir); return; }
     if (b1 === CC_VARIANT) {                        /* geared, like genre */
       if (dir * variantAccum < 0) variantAccum = 0;

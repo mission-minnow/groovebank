@@ -79,6 +79,7 @@ typedef struct {
     uint8_t gate;                    /* note length as % of a step (5..200)    */
     int8_t  strum;                   /* -100..+100: <0 down, >0 up, 0 tight    */
     uint8_t accent;                  /* 0..100 velocity spread (0 = flat)      */
+    uint8_t latch;                   /* 1 = held chord sticks after release    */
 
     uint8_t cur_step;
     uint8_t clock_running;
@@ -87,8 +88,10 @@ typedef struct {
     uint32_t preview_revision;
     int      sample_rate;            /* captured from tick()                   */
 
-    uint8_t held[GB_MAX_HELD];       /* held notes, sorted ascending           */
+    uint8_t held[GB_MAX_HELD];       /* register the groove plays (sorted asc)  */
     int     held_count;
+    uint8_t phys[GB_MAX_HELD];       /* notes physically down (for latch replace) */
+    int     phys_count;
 
     Voice        voices[GB_MAX_VOICES];
     StrumPending strum_q[GB_MAX_HELD];
@@ -178,6 +181,26 @@ static void held_remove(GrooveBankInstance *gi, uint8_t note)
         if (gi->held[i] == note) {
             for (int j = i; j < gi->held_count - 1; j++) gi->held[j] = gi->held[j + 1];
             gi->held_count--;
+            return;
+        }
+    }
+}
+
+/* Physically-down notes — tracked separately so latch can tell a fresh press
+ * (nothing down) from adding to the current chord. */
+static void phys_add(GrooveBankInstance *gi, uint8_t note)
+{
+    for (int i = 0; i < gi->phys_count; i++) if (gi->phys[i] == note) return;
+    if (gi->phys_count >= GB_MAX_HELD) return;
+    gi->phys[gi->phys_count++] = note;
+}
+
+static void phys_remove(GrooveBankInstance *gi, uint8_t note)
+{
+    for (int i = 0; i < gi->phys_count; i++) {
+        if (gi->phys[i] == note) {
+            for (int j = i; j < gi->phys_count - 1; j++) gi->phys[j] = gi->phys[j + 1];
+            gi->phys_count--;
             return;
         }
     }
@@ -361,6 +384,8 @@ static void *gb_create_instance(const char *module_dir, const char *config_json)
     gi->gate = 80;
     gi->strum = 0;
     gi->accent = 50;
+    gi->latch = 0;
+    gi->phys_count = 0;
     gi->cur_step = 0;
     gi->clock_running = 0;
     gi->midi_clocks_until_tick = CLOCKS_PER_STEP;
@@ -416,11 +441,15 @@ static int gb_process_midi(void *instance, const uint8_t *in_msg, int in_len,
     /* ── channel voice messages ── */
     status = hi & 0xF0u;
     if (status == MIDI_NOTE_ON && in_len >= 3 && in_msg[2] > 0) {
+        /* latch: a fresh press (nothing physically down) replaces the latched chord */
+        if (gi->latch && gi->phys_count == 0) gi->held_count = 0;
+        phys_add(gi, in_msg[1]);
         held_add(gi, in_msg[1]);                   /* capture — swallow */
         return 0;
     }
     if (status == MIDI_NOTE_OFF || (status == MIDI_NOTE_ON && (in_len < 3 || in_msg[2] == 0))) {
-        held_remove(gi, in_msg[1]);                /* release — swallow (voice rings out) */
+        phys_remove(gi, in_msg[1]);
+        if (!gi->latch) held_remove(gi, in_msg[1]); /* latch keeps it in the register */
         return 0;
     }
     /* CC / program change / aftertouch / pitch-bend → pass through for
@@ -525,6 +554,15 @@ static void gb_set_param(void *instance, const char *key, const char *val)
     if (strcmp(key, "gate") == 0)   { gi->gate   = (uint8_t)parse_int(val, 5, 200, 80);  return; }
     if (strcmp(key, "strum") == 0)  { gi->strum  = (int8_t) parse_int(val, -100, 100, 0); return; }
     if (strcmp(key, "accent") == 0) { gi->accent = (uint8_t)parse_int(val, 0, 100, 50);  return; }
+    if (strcmp(key, "latch") == 0) {
+        uint8_t on = (uint8_t)parse_int(val, 0, 1, 0);
+        if (!on && gi->latch) {   /* turning OFF releases the latched chord */
+            gi->held_count = 0;
+            for (int i = 0; i < gi->phys_count; i++) held_add(gi, gi->phys[i]);
+        }
+        gi->latch = on;
+        return;
+    }
 
     if (strcmp(key, "state") == 0) {          /* chain autosave / patch restore */
         int hi = g_bank.count > 0 ? g_bank.count - 1 : 0;
@@ -535,6 +573,7 @@ static void gb_set_param(void *instance, const char *key, const char *val)
         gi->gate   = (uint8_t)clampi(json_field_int(val, "\"gate\"",   gi->gate),   5, 200);
         gi->strum  = (int8_t) clampi(json_field_int(val, "\"strum\"",  gi->strum), -100, 100);
         gi->accent = (uint8_t)clampi(json_field_int(val, "\"accent\"", gi->accent), 0, 100);
+        gi->latch  = (uint8_t)clampi(json_field_int(val, "\"latch\"",  gi->latch), 0, 1);
         {
             uint8_t vc = cur_variant_count(gi);
             gi->variant = (uint8_t)clampi(json_field_int(val, "\"variant\"", gi->variant), 0, vc - 1);
@@ -572,13 +611,14 @@ static int gb_get_param(void *instance, const char *key, char *buf, int buf_len)
     if (strcmp(key, "gate") == 0)          return snprintf(buf, buf_len, "%u", gi->gate);
     if (strcmp(key, "strum") == 0)         return snprintf(buf, buf_len, "%d", gi->strum);
     if (strcmp(key, "accent") == 0)        return snprintf(buf, buf_len, "%u", gi->accent);
+    if (strcmp(key, "latch") == 0)         return snprintf(buf, buf_len, "%u", gi->latch);
     if (strcmp(key, "variant") == 0)       return snprintf(buf, buf_len, "%u", gi->variant);
     if (strcmp(key, "variant_count") == 0) return snprintf(buf, buf_len, "%u", cur_variant_count(gi));
     if (strcmp(key, "row0") == 0)          return snprintf(buf, buf_len, "%s", p ? sel_row(gi, p) : "");
     if (strcmp(key, "state") == 0)
         return snprintf(buf, buf_len,
-                        "{\"pattern\":%d,\"variant\":%u,\"swing\":%u,\"gate\":%u,\"strum\":%d,\"accent\":%u}",
-                        gi->pattern, gi->variant, gi->swing, gi->gate, gi->strum, gi->accent);
+                        "{\"pattern\":%d,\"variant\":%u,\"swing\":%u,\"gate\":%u,\"strum\":%d,\"accent\":%u,\"latch\":%u}",
+                        gi->pattern, gi->variant, gi->swing, gi->gate, gi->strum, gi->accent, gi->latch);
 
     if (strcmp(key, "genre_list") == 0) {
         int off = 0, i = 0;

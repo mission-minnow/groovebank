@@ -132,9 +132,13 @@ is repurposed for articulation, the one justified divergence:
 - **K2 — Strum** (bipolar, center-detent): tight block ↔ up-strum (CW) / down-strum (CCW).
 - **K3 — Gate** length (staccato ↔ legato, incl. >100% overlap).
 - **K4 — Accent** depth (velocity spread A/x/g; wide default so accents pop).
-- **Footer** is knob-numbered, 3 rows: **left column = the feel knobs** (`2 Strum`,
-  `3 Gate`, `4 Accent`), **right column = the anchors** (`7 Sw`, `8 <GENRE>`). The
-  diagnostic held-count `h` was removed. K5–K6 reserved.
+- **K5 — Latch** (CW on / CCW off): the held chord sticks after you release, so
+  the groove plays hands-free; a fresh tap replaces it; latch-off syncs the
+  register to whatever is still physically held. Engine tracks `phys[]` (down now)
+  separately from the play register `held[]`. K6 reserved.
+- **Footer** is knob-numbered, 3 rows: **left column = feel knobs** (`2 Strum`,
+  `3 Gate`, `4 Accent`), **right column = anchors + mode** (`7 Sw`, `8 <GENRE>`,
+  `5 LATCH`/`latch`). Held-count `h` removed.
 
 ---
 

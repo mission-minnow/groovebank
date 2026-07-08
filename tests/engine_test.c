@@ -228,6 +228,49 @@ int main(void)
     CHECK(fvc >= 1, "variant_count >= 1 after switch");
     CHECK(fvv >= 0 && fvv < fvc, "variant clamped into range on pattern switch");
 
+    /* 11. Latch — held chord sticks after release */
+    api->set_param(inst, "latch", "0");
+    for (int rn = 0; rn < 128; rn++) send(api, inst, 0x80, (uint8_t)rn, 0, 3, &ons, &offs); /* clear */
+    api->get_param(inst, "held_count", buf, sizeof buf);
+    CHECK(atoi(buf) == 0, "latch off: register empty after releasing all");
+
+    /* latch OFF: press then release -> register empties */
+    send(api, inst, 0x90, 60, 100, 3, &ons, &offs);
+    send(api, inst, 0x90, 64, 100, 3, &ons, &offs);
+    send(api, inst, 0x80, 60, 0, 3, &ons, &offs);
+    send(api, inst, 0x80, 64, 0, 3, &ons, &offs);
+    api->get_param(inst, "held_count", buf, sizeof buf);
+    CHECK(atoi(buf) == 0, "latch off: release clears the register");
+
+    /* latch ON: press then release -> chord STICKS */
+    api->set_param(inst, "latch", "1");
+    send(api, inst, 0x90, 60, 100, 3, &ons, &offs);
+    send(api, inst, 0x90, 64, 100, 3, &ons, &offs);
+    send(api, inst, 0x90, 67, 100, 3, &ons, &offs);
+    send(api, inst, 0x80, 60, 0, 3, &ons, &offs);
+    send(api, inst, 0x80, 64, 0, 3, &ons, &offs);
+    send(api, inst, 0x80, 67, 0, 3, &ons, &offs);
+    api->get_param(inst, "held_count", buf, sizeof buf);
+    CHECK(atoi(buf) == 3, "latch on: chord sticks after release");
+
+    /* the latched chord still fires on the downbeat */
+    send(api, inst, 0xFA, 0, 0, 1, &ons, &offs);
+    CHECK(ons >= 1, "latch on: latched chord fires on 0xFA");
+    send(api, inst, 0xFC, 0, 0, 1, &ons, &offs);
+
+    /* a fresh press (nothing down) replaces the latched chord */
+    send(api, inst, 0x90, 62, 100, 3, &ons, &offs);
+    api->get_param(inst, "held_count", buf, sizeof buf);
+    CHECK(atoi(buf) == 1, "latch on: fresh press replaces the latched chord");
+
+    /* turning latch OFF syncs the register to what's physically held (62 still down) */
+    api->set_param(inst, "latch", "0");
+    api->get_param(inst, "held_count", buf, sizeof buf);
+    CHECK(atoi(buf) == 1, "latch off: register syncs to physically-held notes");
+    send(api, inst, 0x80, 62, 0, 3, &ons, &offs);
+    api->get_param(inst, "held_count", buf, sizeof buf);
+    CHECK(atoi(buf) == 0, "after latch off, release clears the register");
+
     api->destroy_instance(inst);
 
     printf(g_fail ? "\nSOME TESTS FAILED\n" : "\nALL TESTS PASSED\n");
