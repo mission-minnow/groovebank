@@ -3,6 +3,6 @@
     "name": "Groove Bank",
     "description": "Retrigger the chord you hold on a library of standard rhythm templates — genre-first grooves, played by your hands.",
     "component_type": "midi_fx",
-    "version": "0.1.0",
-    "download_url": "https://github.com/mission-minnow/groovebank/releases/download/v0.1.0/groovebank-module.tar.gz"
+    "version": "0.1.8",
+    "download_url": "https://github.com/mission-minnow/groovebank/releases/download/v0.1.8/groovebank-module.tar.gz"
 }
