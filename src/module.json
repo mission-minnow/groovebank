@@ -2,7 +2,7 @@
     "id": "groovebank",
     "name": "Groove Bank",
     "abbrev": "GRUV",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "description": "Retrigger the chord you hold on a library of standard rhythm templates — genre-first grooves, played by your hands.",
     "author": "Mission Minnow",
     "api_version": 2,

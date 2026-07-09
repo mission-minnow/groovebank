@@ -6,41 +6,82 @@
       "lines": [
         "Rhythm templates for the",
         "chord you HOLD. You own",
-        "the pitches, Groove Bank",
+        "the pitches; Groove Bank",
         "owns the timing.",
         "",
         "Hold a chord and the",
-        "selected groove retriggers",
-        "your notes on the beat,",
-        "into the sound generator",
-        "in the same slot. Change",
-        "the chord mid-pattern and",
-        "the next hit follows."
+        "groove retriggers it on",
+        "the beat, through the",
+        "synth in the same slot.",
+        "Change chord mid-pattern",
+        "and the next hit follows."
       ]
     },
     {
-      "title": "How to use",
+      "title": "Setup",
       "lines": [
         "In a chain slot:",
-        " - Sound generator: any",
-        "   synth (pad, bass, keys).",
+        " - Sound gen: any synth",
+        "   (pad, bass, keys).",
         " - MIDI FX: Groove Bank.",
         "",
-        "Press Play, hold a chord",
-        "on the pads. The groove",
-        "chops it to the rhythm.",
+        "Feed it a chord:",
+        " - a USB MIDI keyboard, or",
+        " - Move's pads: set the",
+        "   slot Receive to All,",
+        "   the track MIDI Out On,",
+        "   and mute that track.",
         "",
-        "Menu: Pattern, Globals.",
+        "You hear the CHAIN synth,",
+        "not Move's own track.",
+        "It plays when the",
+        "transport is running."
+      ]
+    },
+    {
+      "title": "Controls",
+      "lines": [
+        "jog: grooves in genre",
+        "K1: variant (flavor,",
+        "    shown as [+] in title)",
+        "K2: strum",
+        "K3: gate",
+        "K4: accent",
+        "K5: latch (CW on/CCW off)",
+        "K7: swing",
+        "K8: switch genre",
+        "Click/Back: exit"
+      ]
+    },
+    {
+      "title": "Feel knobs",
+      "lines": [
+        "Three knobs shape HOW",
+        "each hit sounds:",
         "",
-        "Pattern opens the grid.",
-        " - jog: cycle grooves in",
-        "   the current genre",
-        " - knob 1: gate (short <->",
-        "   long / staccato-legato)",
-        " - knob 7: swing",
-        " - knob 8: switch genre",
-        "Click/Back exit. Plays",
-        "when Move's transport runs."
+        "Strum (K2): spread the",
+        " chord's notes in time",
+        " (tight <-> strummed,",
+        " up CW / down CCW).",
+        "Gate (K3): note length",
+        " (staccato <-> legato).",
+        "Accent (K4): loudness",
+        " spread (flat <-> punchy)."
+      ]
+    },
+    {
+      "title": "Latch",
+      "lines": [
+        "Latch (K5) makes a held",
+        "chord STICK after you let",
+        "go - the groove keeps",
+        "playing hands-free.",
+        "",
+        "Tap a new chord to swap.",
+        "Turn latch off to release.",
+        "",
+        "Great for comping while",
+        "you solo over the top."
       ]
     },
     {
@@ -50,14 +91,28 @@
         "",
         " x  hit     A  accent",
         " g  ghost (soft)",
-        " -  tie / sustain the",
-        "    previous hit",
+        " -  tie/sustain prev hit",
         " .  rest",
         "",
-        "So 'A---' is one accented",
-        "note held for four steps.",
-        "Gate (knob 1) sets how",
-        "long the un-tied hits ring."
+        "'A---' = one accented",
+        "note held four steps.",
+        "Gate (K3) sets how long",
+        "the un-tied hits ring."
+      ]
+    },
+    {
+      "title": "Add Your Own",
+      "lines": [
+        "Grooves are plain .groove",
+        "text files. Drop yours in:",
+        " UserData/schwung/",
+        "  groovebank/patterns/",
+        "",
+        "One 'hit:' row + optional",
+        "'alt:' flavor rows (K1",
+        "morphs them). See",
+        "_HOWTO.txt there for the",
+        "format."
       ]
     },
     {
@@ -68,19 +123,6 @@
         "Sampler) resamples the",
         "chain's audio to a WAV",
         "in Samples/Schwung/."
-      ]
-    },
-    {
-      "title": "Add Your Own",
-      "lines": [
-        "Grooves are plain .groove",
-        "text files. Drop your own",
-        "in:",
-        " UserData/schwung/",
-        "  groovebank/patterns/",
-        "",
-        "See _HOWTO.txt there",
-        "for the format."
       ]
     }
   ]
