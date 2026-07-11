@@ -256,12 +256,20 @@ so `pre_capable: true` is now set (v0.1.11). The routing rule (Schw+Move):
   listening track** (a one-to-many arrangement engine). To groove a specific Move
   instrument cleanly, play on a scratch/drone track and let the target listen.
 
-The one thing NOT achievable: making the *played* track itself groove-only. Its
-raw pad can't be stripped (firmware has no per-track local-off), and the chain
-FX is downstream of the pad→instrument path, so it can't suppress it. A true fix
-would be a **shim-level pad-suppress / local-off** for Pre-mode-FX'd tracks —
-Charles's domain (like the existing cable-2 ext-midi-remap), not something the
-module can do. Documented in README "Drive Move's own instruments (Schw+Move)".
+The one thing NOT achievable — CONFIRMED NOT VIABLE (2026-07-11): making the
+*played* track itself groove-only. Investigated hard and closed:
+- **Module-side "soft" local-off** (GB emits a note-off to kill the pad drone):
+  built (v0.1.12) then **cut** — the drone and groove are the *same pitches on the
+  same instrument*, so note-offs can't tell them apart → "drone / blip / nothing"
+  mush. (Clean on a *separate* listening track because there's no drone there.)
+- **Shim/firmware local-off**: dead end per Charles + Dom — cable-0 is raw pad
+  *indices* (no scale/key/octave), cable-2 real notes are ignored by Move's step
+  sequencer (records the cable-0 note), and Dom's keyboard-input attempt breaks
+  the sequencer. See `docs/proposals/pre-mode-local-off.md` (WITHDRAWN).
+
+**Use the working workflows:** groove on a **separate listening track**, or a
+**chain synth on the played track**. Documented in README "Drive Move's own
+instruments (Schw+Move)".
 
 ## 6. Timing engine (DSP, C) — precise behavior
 

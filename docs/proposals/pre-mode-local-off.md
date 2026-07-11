@@ -2,7 +2,34 @@
 
 **For:** Schwung (`charlesvestal/schwung`) — shim
 **From:** Mission Minnow (Groove Bank / Beat Bank)
-**Status:** draft / RFC
+**Status:** WITHDRAWN — NOT VIABLE (2026-07-11). Kept as a record of the reasoning.
+
+## Resolution (2026-07-11)
+
+Not pursued. Charles + Dom confirmed the shim path is a dead end, not just hard:
+
+- **Cable 0 is raw hardware pad data** with no scale/key/octave knowledge — a pad
+  is just an index encoded as a MIDI note (e.g. note 23 = pad 4). So a shim that
+  fed the module cable-0 input could do *timing* effects (a simple arp) but **not
+  chords/transpose** — you'd be triggering "pads," not actual notes, and the notes
+  change with the pad layout.
+- **Cable 2 is external MIDI (real notes)** and plays, **BUT Move's step sequencer
+  ignores cable-2 input** — hit a step and it records the last *cable-0* note from
+  the hardware layer, not the cable-2 note. So a custom keyboard-input path (which
+  Dom actually built) works for *playing* but **breaks the step sequencer's
+  recording**.
+- Charles is wary on principle of a mode where "Move's pads become raw pad MIDI
+  when a module is installed."
+
+Net: there's no clean way for the shim to give the module real note data *and*
+keep Move's sequencer intact. **Same-track groove-in-place is not achievable.** The
+module-side "soft" local-off (below) was also cut — same-pitch drone/groove
+collision on one instrument makes it mush. Use the working workflows instead:
+**groove on a separate listening track**, or a **chain synth on the played track.**
+
+---
+
+*(Original proposal preserved below for the record.)*
 
 ## Summary
 
