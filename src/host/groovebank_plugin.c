@@ -80,6 +80,8 @@ typedef struct {
     int8_t  strum;                   /* -100..+100: <0 down, >0 up, 0 tight    */
     uint8_t accent;                  /* 0..100 velocity spread (0 = flat)      */
     uint8_t latch;                   /* 1 = held chord sticks after release    */
+    uint8_t local_off;               /* 1 = emit note-off on input, killing the
+                                      *     played track's raw-pad drone (Pre mode) */
 
     uint8_t cur_step;
     uint8_t clock_running;
@@ -385,6 +387,7 @@ static void *gb_create_instance(const char *module_dir, const char *config_json)
     gi->strum = 0;
     gi->accent = 50;
     gi->latch = 0;
+    gi->local_off = 0;
     gi->phys_count = 0;
     gi->cur_step = 0;
     gi->clock_running = 0;
@@ -445,6 +448,16 @@ static int gb_process_midi(void *instance, const uint8_t *in_msg, int in_len,
         if (gi->latch && gi->phys_count == 0) gi->held_count = 0;
         phys_add(gi, in_msg[1]);
         held_add(gi, in_msg[1]);                   /* capture — swallow */
+        /* local-off: emit a note-off for the played pitch. In Pre mode this is
+         * injected to Move and kills the raw pad's sustaining drone on the played
+         * track, so only the grooved retriggers sound. Harmless in Post mode. */
+        if (gi->local_off && max_out >= 1) {
+            out_msgs[0][0] = (uint8_t)(MIDI_NOTE_OFF | OUT_CHANNEL);
+            out_msgs[0][1] = in_msg[1];
+            out_msgs[0][2] = 0;
+            out_lens[0] = 3;
+            return 1;
+        }
         return 0;
     }
     if (status == MIDI_NOTE_OFF || (status == MIDI_NOTE_ON && (in_len < 3 || in_msg[2] == 0))) {
@@ -563,6 +576,7 @@ static void gb_set_param(void *instance, const char *key, const char *val)
         gi->latch = on;
         return;
     }
+    if (strcmp(key, "local_off") == 0) { gi->local_off = (uint8_t)parse_int(val, 0, 1, 0); return; }
 
     if (strcmp(key, "state") == 0) {          /* chain autosave / patch restore */
         int hi = g_bank.count > 0 ? g_bank.count - 1 : 0;
@@ -574,6 +588,7 @@ static void gb_set_param(void *instance, const char *key, const char *val)
         gi->strum  = (int8_t) clampi(json_field_int(val, "\"strum\"",  gi->strum), -100, 100);
         gi->accent = (uint8_t)clampi(json_field_int(val, "\"accent\"", gi->accent), 0, 100);
         gi->latch  = (uint8_t)clampi(json_field_int(val, "\"latch\"",  gi->latch), 0, 1);
+        gi->local_off = (uint8_t)clampi(json_field_int(val, "\"local_off\"", gi->local_off), 0, 1);
         {
             uint8_t vc = cur_variant_count(gi);
             gi->variant = (uint8_t)clampi(json_field_int(val, "\"variant\"", gi->variant), 0, vc - 1);
@@ -612,13 +627,14 @@ static int gb_get_param(void *instance, const char *key, char *buf, int buf_len)
     if (strcmp(key, "strum") == 0)         return snprintf(buf, buf_len, "%d", gi->strum);
     if (strcmp(key, "accent") == 0)        return snprintf(buf, buf_len, "%u", gi->accent);
     if (strcmp(key, "latch") == 0)         return snprintf(buf, buf_len, "%u", gi->latch);
+    if (strcmp(key, "local_off") == 0)     return snprintf(buf, buf_len, "%u", gi->local_off);
     if (strcmp(key, "variant") == 0)       return snprintf(buf, buf_len, "%u", gi->variant);
     if (strcmp(key, "variant_count") == 0) return snprintf(buf, buf_len, "%u", cur_variant_count(gi));
     if (strcmp(key, "row0") == 0)          return snprintf(buf, buf_len, "%s", p ? sel_row(gi, p) : "");
     if (strcmp(key, "state") == 0)
         return snprintf(buf, buf_len,
-                        "{\"pattern\":%d,\"variant\":%u,\"swing\":%u,\"gate\":%u,\"strum\":%d,\"accent\":%u,\"latch\":%u}",
-                        gi->pattern, gi->variant, gi->swing, gi->gate, gi->strum, gi->accent, gi->latch);
+                        "{\"pattern\":%d,\"variant\":%u,\"swing\":%u,\"gate\":%u,\"strum\":%d,\"accent\":%u,\"latch\":%u,\"local_off\":%u}",
+                        gi->pattern, gi->variant, gi->swing, gi->gate, gi->strum, gi->accent, gi->latch, gi->local_off);
 
     if (strcmp(key, "genre_list") == 0) {
         int off = 0, i = 0;

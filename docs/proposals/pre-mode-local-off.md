@@ -89,6 +89,30 @@ behavior) or uses the separate-track workflow.
 - No module-side API change is strictly required; local-off is a slot/shim
   behavior driven by the existing `pre_capable` + the new toggle.
 
+## Update — findings from a shim MIDI-flow audit (2026-07-11)
+
+Two things surfaced while mapping the shim that refine this proposal:
+
+1. **A raw suppress-and-redispatch is not enough — pitch mapping.** Cable-0 pad
+   events carry the **physical pad index (68–99)**; the chain currently receives
+   the **scale/pad-mapped musical pitch** only via the cable-2 echo (Move's
+   firmware does the mapping). So if the shim drops the pad in MIDI_IN and
+   re-dispatches the raw event to the chain, the FX grooves the *wrong notes*. A
+   proper shim local-off must let Move **process the note for pitch + echo** but
+   **not sound it** — i.e. real per-voice local-off inside Move, not just a
+   MIDI_IN drop. That's the crux ask.
+
+2. **A module-side "soft" local-off already works (shipping in Groove Bank
+   v0.1.12) and may be enough** for most cases: when enabled, the FX emits a
+   **note-off for each played pitch**, which (in Pre mode) is injected to Move and
+   **kills the raw pad's sustain** — using the already-correct mapped pitch, no
+   MIDI_IN editing, no wrong-note risk. The only cost is a brief attack transient
+   (Move sounds the pad for ~1 frame before the injected note-off lands, because
+   the FX is downstream of the pad). A shim/firmware local-off would remove even
+   that transient. So the shim feature is the "hard" version; the module gives a
+   good "soft" version today. Worth deciding whether the transient is worth a
+   firmware change.
+
 ## Open questions for you
 
 - Best surface for the toggle (slot MIDI-FX settings vs a global default)?

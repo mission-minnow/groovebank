@@ -271,6 +271,18 @@ int main(void)
     api->get_param(inst, "held_count", buf, sizeof buf);
     CHECK(atoi(buf) == 0, "after latch off, release clears the register");
 
+    /* 12. Local-off — emit a note-off on input (kills the played-track drone) */
+    api->set_param(inst, "latch", "0");
+    for (int rn = 0; rn < 128; rn++) send(api, inst, 0x80, (uint8_t)rn, 0, 3, &ons, &offs); /* clear */
+    api->set_param(inst, "local_off", "0");
+    n = send(api, inst, 0x90, 60, 100, 3, &ons, &offs);
+    CHECK(n == 0, "local_off off: note-on is swallowed (0 out)");
+    api->set_param(inst, "local_off", "1");
+    n = send(api, inst, 0x90, 62, 100, 3, &ons, &offs);
+    CHECK(n == 1 && offs == 1 && ons == 0, "local_off on: note-on emits a note-off (kills drone)");
+    api->get_param(inst, "held_count", buf, sizeof buf);
+    CHECK(atoi(buf) == 2, "local_off on: note still captured to the register");
+
     api->destroy_instance(inst);
 
     printf(g_fail ? "\nSOME TESTS FAILED\n" : "\nALL TESTS PASSED\n");
