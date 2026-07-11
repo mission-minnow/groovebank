@@ -245,12 +245,23 @@ never Move's native track instruments. Chord input = an external MIDI keyboard
 (cleanest) OR Move's pads used as a silent controller (Receive All + track MIDI
 Out on + mute the track). Documented in README "Feeding it a chord".
 
-**Not pursued (v1):** patterning Move's native instruments via Pre-mode inject
-(Beat Bank's Schw+Move). It's technically reachable (add `pre_capable`, reuse the
-Beat Bank inject path), but the held-chord input can't come from a pad on the
-target instrument (it would sustain), so it needs an external keyboard or a
-separate muted input track. Deferred; the clean fit for Move-native patterning is
-a *generator* (specify chords), not a live-held retrigger.
+**Move-native patterning — REVERSED after hardware testing (2026-07-11).** We had
+"deferred" this. Joe's hardware pass proved it works and is a headline capability,
+so `pre_capable: true` is now set (v0.1.11). The routing rule (Schw+Move):
+- The track you physically **play** sounds its instrument **raw** (Move plays the
+  pad directly, in firmware — un-interceptable, so it's a *drone*).
+- Groove Bank's grooved MIDI is **injected/broadcast**; any track with **MIDI In
+  on** the receive channel plays the **clean groove**.
+- So one performance = **drone on the played track + a grooved copy on every
+  listening track** (a one-to-many arrangement engine). To groove a specific Move
+  instrument cleanly, play on a scratch/drone track and let the target listen.
+
+The one thing NOT achievable: making the *played* track itself groove-only. Its
+raw pad can't be stripped (firmware has no per-track local-off), and the chain
+FX is downstream of the pad→instrument path, so it can't suppress it. A true fix
+would be a **shim-level pad-suppress / local-off** for Pre-mode-FX'd tracks —
+Charles's domain (like the existing cable-2 ext-midi-remap), not something the
+module can do. Documented in README "Drive Move's own instruments (Schw+Move)".
 
 ## 6. Timing engine (DSP, C) — precise behavior
 

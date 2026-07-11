@@ -66,6 +66,39 @@ pad, a bass…).
 
 ---
 
+## 🎚 Drive Move's own instruments (Schw+Move)
+
+Set the slot's MIDI-FX mode to **Schw+Move** and Groove Bank *injects* its
+grooved MIDI into Move, so **Move's own native instruments can play the groove**.
+One rule governs it:
+
+> The track you physically **play** always sounds its instrument **raw** (the
+> sustained chord — Move plays the pad directly, in firmware). The grooved MIDI is
+> **broadcast to any track listening on the channel**. So the **played track = a
+> drone**, and every track with **MIDI In on = a clean groove**.
+
+That turns one chord performance into a **whole arrangement**:
+
+```
+Play 4 chords on Track 2   →  Track 2 (native): droning held chords
+Track 3 = bass, MIDI In on →  Track 3: the same chords, grooved
+Track 5 = keys, MIDI In on →  Track 5: grooved too
+```
+
+**To groove a specific Move instrument cleanly**, don't play pads *on* that track
+(the raw pad would sustain over the top). Instead play on a scratch/drone track
+and let the target listen:
+
+```
+Play chords on Track 1  (Groove Bank lives here; drone or muted)
+Track 2 = your sound, MIDI In ON  →  Track 2 grooves, clean
+```
+
+Aim the groove with channels: the inject lands on the slot's **Receive** channel,
+and any track whose **MIDI In** matches will play it.
+
+---
+
 ## 🎛 The Pattern view
 
 A fullscreen grid. Genre-first browsing on the jog, one rhythm lane (the pitches
