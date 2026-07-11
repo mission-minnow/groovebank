@@ -136,9 +136,9 @@ is repurposed for articulation, the one justified divergence:
   the groove plays hands-free; a fresh tap replaces it; latch-off syncs the
   register to whatever is still physically held. Engine tracks `phys[]` (down now)
   separately from the play register `held[]`. K6 reserved.
-- **Footer** is knob-numbered, 3 rows: **left column = feel knobs** (`2 Strum`,
-  `3 Gate`, `4 Accent`), **right column = anchors + mode** (`7 Sw`, `8 <GENRE>`,
-  `5 LATCH`/`latch`). Held-count `h` removed.
+- **Footer** is knob-numbered in reading order, 2 cols × 3 rows:
+  `2 Strum · 3 Gate` / `4 Accent · 5 Latch` / `7 Swing · 8 <GENRE>`
+  (`5 LATCH` caps = on). Held-count `h` removed.
 
 ---
 

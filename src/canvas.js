@@ -208,16 +208,18 @@ function draw(ctx) {
     }
   }
 
-  /* Footer: knob-numbered. Left column = the three feel knobs (K2 strum,
-   * K3 gate, K4 accent); right column = the anchors (K7 swing, K8 genre).
+  /* Footer: knobs in numeric reading order, 2 columns x 3 rows —
+   *   2 Strum   3 Gate
+   *   4 Accent  5 Latch
+   *   7 Swing   8 <genre>
    * All rows sit above y63 so nothing clips off the 64px panel. */
   const st = (g.strum > 0 ? '+' : '') + g.strum;
   ctx.print(0, 40,  '2 Strum ' + st, 1);
-  ctx.print(76, 40, '7 Sw ' + g.swing, 1);
-  ctx.print(0, 48,  '3 Gate ' + g.gate, 1);
-  ctx.print(76, 48, '8 ' + (ge.name || '').slice(0, 7), 1);
-  ctx.print(0, 56,  '4 Accent ' + g.accent, 1);
-  ctx.print(76, 56, '5 ' + (g.latch ? 'LATCH' : 'latch'), 1);   /* caps = on */
+  ctx.print(68, 40, '3 Gate ' + g.gate, 1);
+  ctx.print(0, 48,  '4 Accent ' + g.accent, 1);
+  ctx.print(68, 48, '5 ' + (g.latch ? 'LATCH' : 'latch'), 1);   /* caps = on */
+  ctx.print(0, 56,  '7 Swing ' + g.swing, 1);
+  ctx.print(68, 56, '8 ' + (ge.name || '').slice(0, 7), 1);
 }
 
 globalThis.canvas_overlay = {
