@@ -6,6 +6,8 @@
  *
  * Controls:
  *   - jog turn          -> cycle patterns WITHIN the current genre
+ *   - Shift + jog turn  -> switch genre (needs ctx.shiftHeld(); falls back to
+ *                          plain pattern-cycle on a host without it)
  *   - Knob 1 turn       -> variant (shown in the title as [+], [++], ...)
  *   - Knob 2 turn       -> strum (bipolar: <0 down-strum, >0 up-strum, 0 tight)
  *   - Knob 3 turn       -> gate length (staccato <-> legato)
@@ -232,7 +234,11 @@ globalThis.canvas_overlay = {
     const type = d[0] & 0xF0, b1 = d[1], b2 = d[2];
     if (type !== 0xB0 || b2 === 0) return;   /* encoders: 1..63 = +, 64..127 = - */
     const dir = b2 < 64 ? 1 : -1;
-    if (b1 === CC_JOG)    { cyclePattern(ctx, dir); return; }
+    if (b1 === CC_JOG) {   /* shift+jog = genre, plain jog = pattern (shift falls back if host lacks it) */
+      const shifted = typeof ctx.shiftHeld === 'function' && ctx.shiftHeld();
+      (shifted ? switchGenre : cyclePattern)(ctx, dir);
+      return;
+    }
     if (b1 === CC_STRUM)  { setStrum(ctx, dir); return; }
     if (b1 === CC_GATE)   { setGate(ctx, dir); return; }
     if (b1 === CC_ACCENT) { setAccent(ctx, dir); return; }
