@@ -20,6 +20,26 @@ makes the *rhythm*, your fingers make the *harmony*, and the chain plays the syn
 
 ---
 
+## ⚠️ Read this first: Schwung-mode only
+
+> **Groove Bank plays the synth loaded in its own chain slot — NOT Move's native
+> track instruments.**
+>
+> It is a **Schw (post) mode** module and **cannot** run in **Schw+Move (Pre)
+> mode** — Pre is deliberately disabled (`pre_capable` removed in v0.1.15). If you
+> somehow force it into Pre (e.g. an old set saved that way), it **won't work**:
+> the groove fires once and dies, or the held chord won't sustain. That's an
+> unavoidable MIDI **feedback loop** — Move echoes the injected groove back into
+> the chain and drains the held notes — **not** something you can tune around.
+> If a slot is stuck in Pre, switch it back to **Schw**.
+>
+> **Want a sampler / drum-kit sound instead of a synth?** Load a sampler as the
+> slot's **Sound Generator** — `wav-player` or an **SF2** synth — and Groove Bank
+> grooves *that*, cleanly. There is no "drive my Move track" mode; loading the
+> sound into the slot is the way.
+
+---
+
 ## 🚀 Quick start
 
 Groove Bank plays the **Sound Generator loaded in its slot** — a Schwung synth —
@@ -32,7 +52,8 @@ Move's native track instruments; see [Feeding it a chord](#-feeding-it-a-chord).
 3. Feed it a chord (see below), **press Play**, and hold. You'll hear the chord
    chopped to the current groove through your chain synth. 🎉
 4. **Turn the jog** to audition grooves in the current genre; **Knob 8** hops
-   genres; **Knob 7** adds swing; **Knob 1** sets the gate (staccato ↔ legato).
+   genres; **Knob 1** morphs the variant; **Knob 3** sets the gate (staccato ↔
+   legato); **Knob 7** adds swing. (Full knob map below.)
 5. Move your hand to a new chord — the groove keeps running and strikes the new
    notes on the next hit.
 
