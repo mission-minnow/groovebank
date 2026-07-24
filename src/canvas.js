@@ -33,10 +33,12 @@ const GATE_STEP = 5;
 const STRUM_STEP = 5;
 const ACCENT_STEP = 5;
 
-/* K1 (variant) and K8 (genre) are geared down on the endless encoder — several
- * detents per step so the short variant list and long genre list aren't twitchy. */
-const GENRE_DETENTS_PER_STEP = 3;
-const VARIANT_DETENTS_PER_STEP = 3;
+/* K1 (variant) and K8 (genre) are geared way down on the endless encoder — one
+ * step per 24 detents (~half a physical turn on Move's ~48-detent knobs). The
+ * lists are short (a few variants; genres browsed a step at a time), so a
+ * deliberate turn beats a twitchy flick that skips past the one you want. */
+const GENRE_DETENTS_PER_STEP = 24;
+const VARIANT_DETENTS_PER_STEP = 24;
 let genreAccum = 0;
 let variantAccum = 0;
 
