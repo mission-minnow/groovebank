@@ -245,16 +245,28 @@ never Move's native track instruments. Chord input = an external MIDI keyboard
 (cleanest) OR Move's pads used as a silent controller (Receive All + track MIDI
 Out on + mute the track). Documented in README "Feeding it a chord".
 
-**Move-native patterning — REVERSED after hardware testing (2026-07-11).** We had
-"deferred" this. Joe's hardware pass proved it works and is a headline capability,
-so `pre_capable: true` is now set (v0.1.11). The routing rule (Schw+Move):
-- The track you physically **play** sounds its instrument **raw** (Move plays the
-  pad directly, in firmware — un-interceptable, so it's a *drone*).
-- Groove Bank's grooved MIDI is **injected/broadcast**; any track with **MIDI In
-  on** the receive channel plays the **clean groove**.
-- So one performance = **drone on the played track + a grooved copy on every
-  listening track** (a one-to-many arrangement engine). To groove a specific Move
-  instrument cleanly, play on a scratch/drone track and let the target listen.
+**Move-native patterning — RE-REVERSED: NON-VIABLE, `pre_capable` REMOVED (2026-07-24).**
+The 2026-07-11 hardware pass looked like it worked, but sustained testing on schwung
+0.11.6 proved Pre mode is a **feedback loop** for Groove Bank. Confirmed on-device
+(transport OFF → held register is rock-steady; transport ON → it wavers 0/1/2 and
+nothing sustains) and root-caused in the chain host:
+- In Pre mode the chain injects GB's groove into Move; Move **echoes** that MIDI back
+  into the chain (`src/modules/chain/dsp/chain_midi.c`).
+- The host's echo filter `pre_injected_notes[]` **counts only injected note-ONs**
+  (`pre_mode_track_inject`) but **decrements on every echoed note-OFF**
+  (`pre_mode_is_echo`). GB re-attacks every held pitch each step (a `kill_voice`
+  note-off + a gate note-off per hit) → it injects **~2 note-offs per note-on** → the
+  refcount underflows to 0 → surplus note-off echoes **leak past the filter into
+  `gb_process_midi` → `held_remove` → the register drains**.
+- Charles's filter works for the built-in ARP (Move plays the held pad natively; clean
+  retrigger stream + `pre_pad_held` skip on the TICK path). GB **swallows the pad and
+  re-attacks on the CLOCK path** — incompatible. And **no refcount can fix it**: while
+  GB grooves pitch P, its echoed note-off and the user's real pad release are the
+  *identical* MIDI event.
+
+So `pre_capable` is **removed** (v0.1.15). Groove Bank is chain-synth only, matching
+its original design (§5.1). This also subsumes the earlier "played-track groove-only"
+dead-end below — Move-native is off the table entirely, not just in-place.
 
 The one thing NOT achievable — CONFIRMED NOT VIABLE (2026-07-11): making the
 *played* track itself groove-only. Investigated hard and closed:

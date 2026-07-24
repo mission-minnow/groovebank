@@ -66,36 +66,26 @@ pad, a bass…).
 
 ---
 
-## 🎚 Drive Move's own instruments (Schw+Move)
+## 🎚 Chain-synth only (no Schw+Move / Pre mode)
 
-Set the slot's MIDI-FX mode to **Schw+Move** and Groove Bank *injects* its
-grooved MIDI into Move, so **Move's own native instruments can play the groove**.
-One rule governs it:
+Groove Bank is a **Schw (post) mode** module — it grooves the **Sound Generator
+loaded in its own slot**, and that's it. It does **not** drive Move's native
+track instruments.
 
-> The track you physically **play** always sounds its instrument **raw** (the
-> sustained chord — Move plays the pad directly, in firmware). The grooved MIDI is
-> **broadcast to any track listening on the channel**. So the **played track = a
-> drone**, and every track with **MIDI In on = a clean groove**.
+**Why not:** in Pre mode the chain injects Groove Bank's output into Move, and
+Move echoes that MIDI straight back into the chain. Because Groove Bank
+re-attacks each held pitch every step (a `kill` note-off + a gate note-off per
+hit), it emits ~2 note-offs per note-on — more than the host's Pre-mode echo
+filter (which counts only note-ons) can absorb, so the surplus note-off echoes
+leak back in and drain Groove Bank's held register. The result is a feedback
+loop: the groove fires once and dies. While Groove Bank is grooving a pitch, its
+own echoed note-off and your real key release are the *identical* MIDI event, so
+no filter can separate them. Pre mode is therefore disabled for this module
+(`pre_capable` removed in v0.1.15).
 
-That turns one chord performance into a **whole arrangement**:
-
-```
-Play 4 chords on Track 2   →  Track 2 (native): droning held chords
-Track 3 = bass, MIDI In on →  Track 3: the same chords, grooved
-Track 5 = keys, MIDI In on →  Track 5: grooved too
-```
-
-**To groove a specific Move instrument cleanly**, don't play pads *on* that track
-(the raw pad would sustain over the top). Instead play on a scratch/drone track
-and let the target listen:
-
-```
-Play chords on Track 1  (Groove Bank lives here; drone or muted)
-Track 2 = your sound, MIDI In ON  →  Track 2 grooves, clean
-```
-
-Aim the groove with channels: the inject lands on the slot's **Receive** channel,
-and any track whose **MIDI In** matches will play it.
+**Want a sampler/kit sound?** Load a sampler as the chain's **Sound Generator**
+(e.g. `wav-player` or an SF2 synth) — Groove Bank grooves that, pads swallowed,
+no Move-native routing, no echo.
 
 ---
 
